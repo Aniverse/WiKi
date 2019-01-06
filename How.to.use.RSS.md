@@ -24,11 +24,10 @@
 1. 上手简单，功能也足够强大，regx、cookies，url_rewrite 都支持。种子直接添加到 rTorrent，之后可以将 Deluge、qBittorrent 的监控目录设定成 rTorrent session 目录来实现 ruTorrent 给 De/qB RSS
 2. 功能很强大，本菜鸡表示很多进阶用法其实我都不会（不过简单的用法足够应付不少情况了）  ┓( ´∀\` )┏  
 3. Deluge YaRSS2 插件不支持 WebUI，只能配合 ThinClient 使用。过滤功能一般，RSS 间隔最小也要 5 分钟 1 次，不太够用，不是很推荐
-4. 估计在盒子上使用 qBittorrent 自带 RSS 功能的人很少，因为 qBittorrent 的 RSS 功能目前在官方的 WebUI 上还没有实现，WebAPI 是有了但似乎还没见到有人做，我看还是得等官方来做这个功能了
-如果你用 Linux 桌面环境，安装 qBittorrent GUI 版本，在桌面环境下配置 RSS，再开一个 WebUI 来远程操作的话倒也是可以。不过 qBittorrent 本身的 RSS 功能我觉得也不够强大……
+4. 估计在盒子上使用 qBittorrent 自带 RSS 功能的人很少，因为 qBittorrent 的 RSS 功能目前在官方的 WebUI 上还没有实现，WebAPI 是有了但似乎还没见到有人做，我看还是得等官方来做这个功能了  
+如果你用 Linux 桌面环境，安装 qBittorrent GUI 版本，在桌面环境下配置 RSS，再开一个 WebUI 来远程操作的话倒也是可以（另外如果在 GUI 下配置了 RSS，直接把配置文件内容写到 nox 上似乎也可以，我还没测试过）。不过话说回来， qBittorrent 本身的 RSS 功能我觉得也不够强大……
 5. Flood 的 RSS 功能比起来 ruTorrent 还是要弱不少，不知道有多少人在用
-6. uTorrent Server 基本上没几个 PT 站允许使用的，官方也弃更了，RSS 也不好用，不讨论；wine uTorrent 我没怎么试过，感觉也不是很有必要  
-剩下的基本就是 Windows uTorrent 用户了，这类用户也不多  
+6. uTorrent Server 基本上没几个 PT 站允许使用的，官方也弃更了，RSS 也不好用，不讨论；wine uTorrent 我没怎么试过，感觉也不是很有必要。剩下的基本就是 Windows uTorrent 用户了，这类用户也不多  
 7. 用脚本 RSS 一般是两种情况：1. 站点没提供 RSS 和 AutoDL-Irssi，只能靠脚本抓取新种子；2. 站点提供的 RSS 无法满足用户的需求（比如你想 RSS Cinematik 的 CC 种子，你用自带的 RSS 就做不到，因为 RSS 源里就不包含种子是否是 CC 的信息）
 这类脚本一般都需要对特定站点进行定制，没有通用脚本（顶多一个架构下的不同站点适配，全适配不可能）  
 
@@ -90,6 +89,7 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 
 
 ## 3. 配置 RSS
+
 Flexget 和 ruTorrent 的详细 RSS 配置我先略过了，以后有空再写，反正大多数人都会了，我这里就先说需要 Cookies 和 url_rewrite 的情况  
 
 ### Flexget RSS
@@ -124,25 +124,31 @@ tasks:
 
 简单地讲解下：
 
-[headers](https://flexget.com/Plugins/headers)：这个插件可以修改 request headers（请求头）。刚才在获取 Cookies 那一章里提到过这个东西，这个插件改的就是这个。一般让 headers 里带上 cookies 就行（有些情况下可能还需要修改 User-Agent）
+**[headers](https://flexget.com/Plugins/headers)**：这个插件可以修改 request headers（请求头）。刚才在获取 Cookies 那一章里提到过这个东西，这个插件改的就是这个。一般让 headers 里带上 cookies 就行（有些情况下可能还需要修改 User-Agent）
 PS：也可以用 Flexget 的 [cookies](https://flexget.com/Plugins/cookies) 来搞定 cookies，不过我觉得还是用 headers 更方便  
 
 另外实测 `__cfduid` 和 `PHPSESSID` 其实不写也没事，不过既然都复制下来了，写上去也无妨……
 
-[urlrewrite](https://flexget.com/Plugins/urlrewrite)：对 RSS 源里给出的网址进行替换。将原本形如 `http://asiandvdclub.org/details.php?id=123456` 的种子描述页面链接替换为形如 `http://asiandvdclub.org/download.php?id=123456` 的种子下载链接
+**[urlrewrite](https://flexget.com/Plugins/urlrewrite)**：对 RSS 源里给出的网址进行替换。将原本形如 `http://asiandvdclub.org/details.php?id=123456` 的种子描述页面链接替换为形如 `http://asiandvdclub.org/download.php?id=123456` 的种子下载链接
 
-你可能会有一些疑问：
+你可能会有一些疑问：  
+
 【1】CinemaGeddon 的 RSS 下载链接其实是要替换的，为什么没配置 urlrewrite？  
-这是因为，Flexget 自带的 `[URL Rewriters](https://flexget.com/URLRewriters)` 模板中已经包含了 CinemaGeddon 的下载链接替换模板，都不需要我自己来写了。  
+
+这是因为，Flexget 自带的 **[URL Rewriters](https://flexget.com/URLRewriters)** 模板中已经包含了 CinemaGeddon 的下载链接替换模板，都不需要我自己来写了。  
 但是也有个蛋疼的问题，Flexget 对于特殊字符的 urlrewrite 存在问题，导致下载形如 `Los Días Calientes [Argentina] [1966/WEB-DL/x264] (Comedy)` 的种子的时候会失败，这种时候如果能不用自带的模板下载种子的话反而能避开这个问题  
 这个问题我暂时还没研究如何解决，要么去给官方反应问题等待官方修复，要么自己把这个插件禁用掉（我也还没试过怎么禁用）  
 
 【2】Cinematik 的 RSS 链接里带了 key，为什么还需要 Cookies？  
+
 Tik 真的是蛋疼，查看源码后你会看到它有三种 RSS 链接  
-![TIK-1](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-1.png)
+
+![TIK-1](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-1.png)  
 
 我第一反应就是，这个 `direct download` 应该就是可以直接下载且带 passkey 的（链接里都写着 key 了）——但实际上并不是。打开链接后打开这个 RSS 链接后你会发现，这个 RSS 源确实给了你下载链接，不需要你 rewrite url 了，但是下载链接不带 passkey，你还是需要配置 cookies  
-![TIK-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-2.png)
+
+![TIK-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-2.png)  
+
 此外这个 RSS 源里还有一个不带 key 的 direct download RSS 链接，效果和带 key 的是一样的：`https://www.cinematik.net/rsstik-direct.xml`，然而这个链接你在 Tik 种子页面的源码里是找不到的……  
 
 
