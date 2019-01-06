@@ -41,43 +41,49 @@
 我刷过的绝大多数站点都提供了 RSS 功能，有的站点的 RSS 功能比较强大（比如 AvistaZ 系列），有的比较简陋（比如 AsianDVDClub），但总比没有强（比如 HD-Spain 就没 RSS）。  
 有时候站点有 RSS 却不能被轻易找到，甚至索性有的站点页面上就找不到 RSS 的按钮。我个人推荐查看页面源代码的方式寻找 RSS 源，这个办法寻找 RSS 源比较便捷。如果这个办法还没找到，再去页面上看看、FAQ/WiKi 找找、论坛里搜索看看，都找不到的话基本上可以确定这个站点没提供 RSS 功能。  
 
-一般我们在种子页面寻找 RSS 源，对于 Chrome 浏览器，按下快捷键 `Ctrl+U` 进入到源码浏览，然后按下 `Ctrl+F` 开启页面搜索。一般来说寻找 RSS 的话就搜索 rss 或者 feed，如下图：
+一般我们在种子页面寻找 RSS 源，对于 Chrome 浏览器，按下快捷键 `Ctrl+U` 进入到源码浏览，然后按下 `Ctrl+F` 开启页面搜索。一般来说寻找 RSS 的话就搜索 rss 或者 feed，如下图：  
 
-![fe09c43fee37c2a4b0c066c3bc88b0ae.png](en-resource://database/5151:1)
+![CG-1](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-1.png)
 
-右键复制这个 <u>/rss.xml</u> 的链接地址，即为该站点的 RSS 链接。
-Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
+右键复制这个 <u>/rss.xml</u> 的链接地址，即为该站点的 RSS 链接。  
+Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`  
 打开这个链接，可以看到如下界面：
 
-![f4c96713cb47659547a138ffe9407ec0.png](en-resource://database/5153:1)
+![CG-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-2.png)
 
 第一个种子的链接是：`http://cinemageddon.net/details.php?id=217348`  
 显然，这不是种子的下载链接（下载链接一般都是 download.php 之类的，或者什么 linktype=dl，总之一般都和下载这个词有关系）。打开页面后也可以看到，这其实是种子的浏览页面：  
-![9d00c07118caa7dff793e5e9323123de.png](en-resource://database/5155:1)
 
-右键复制种子的下载链接，得到这个链接：`http://cinemageddon.net/download.php?id=217348&name=A.Revolucao.de.Maio.1937.720p.WEBRip.x264-MaZ.mkv.torrent`
-观察这个种子下载链接和之前的种子页面链接，其实主要区别就在于 `details.php` 和 `download.php` 上
+![CG-3](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-3.png)
+
+右键复制种子的下载链接，得到这个链接：`http://cinemageddon.net/download.php?id=217348&name=A.Revolucao.de.Maio.1937.720p.WEBRip.x264-MaZ.mkv.torrent`  
+观察这个种子下载链接和之前的种子页面链接，其实主要区别就在于 `details.php` 和 `download.php` 上  
 把后面的 `name=A.Revolucao.de.Maio.1937.720p.WEBRip.x264-MaZ.mkv.torrent` 替换成 `name=123.torrent`，你下来的文件本身还是一样的，就是文件名不同罢了  
 如果你直接用 `http://cinemageddon.net/download.php?id=217348` 下载，会得到 `download.php` 这个文件，但其实这也是一个种子文件，就是后缀名不对罢了  
 因此，后边的 `name=XXX` 这一串其实意义不大，我们要做的就是把 `details` 这个词替换成 `download`，这一操作要如何完成，在之后讲解  
 
 
+
+
+
 ### 2. 获取 Cookies
-由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassic），无法直接在盒子上下载种子，因此需要使用 cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）
+
+由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassic），无法直接在盒子上下载种子，因此需要使用 cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）  
 获取 Cookies 的办法有很多种，比如可以用 [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg) 插件导出，或者按照下图操作：
-![e47aa1a500f116b94261cc96762d2bed.png](en-resource://database/5157:1)
-![cf05021e513f151044a80aa4569ad0e7.png](en-resource://database/5159:1)
+
+![CG-4](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-4.png)
+![CG-5](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-5.png)
 
 这里 cookies 有三个值，实测 `__cfduid` 不用写也可以用于 RSS  
 
 本文再介绍一种我个人在用的复制 Cookies 的办法：（大佬们如有更便捷的方案，欢迎告知）
 1. Chrome 浏览器，标签页切换到你要获取 cookies 的站点，按下快捷键 `F12` 打开控制台，切换到 Network
-![7f84a2ed2f169599cfcfa95de85dc1f4.png](en-resource://database/5161:1)
+![CG-6](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-6.png)
 2. 按下 `F5`，刷新页面
-![34ba86f3b6d8e33f1c4f3fa09384e359.png](en-resource://database/5163:1)
+![CG-7](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-7.png)
 点第一个 `details.php?id=217348`，也就是和网址一样的那个
-3. 直接复制 `Request Headers` 里 `Cookies` 那一栏就可以了。值得注意的是 `User-Agent`，有些情况下我们需要修改 UA
-![bf001d9c80b07442770354f3ec9a07a2.png](en-resource://database/5165:1)
+3. 直接复制 `Request Headers` 里 `Cookies` 那一栏就可以了。值得注意的是 `User-Agent`，有些情况下我们需要修改 UA  
+![CG-8](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-8.png)
 复制下来的格式形如：`__cfduid=abcd123456789; uid=12450; pass=123sometimesnaive` 就没问题了
 
 
@@ -122,16 +128,17 @@ PS：也可以用 Flexget 的 [cookies](https://flexget.com/Plugins/cookies) 来
 [urlrewrite](https://flexget.com/Plugins/urlrewrite)：对 RSS 源里给出的网址进行替换。将原本形如 http://asiandvdclub.org/details.php?id=123456 的种子描述页面链接替换为形如 http://asiandvdclub.org/download.php?id=123456 的种子下载链接
 
 你可能会有一些疑问：
-1. CinemaGeddon 的 RSS 下载链接其实是要替换的，我却没配置 urlrewrite？
+1. CinemaGeddon 的 RSS 下载链接其实是要替换的，我却没配置 urlrewrite？  
 这是因为，Flexget 自带的 [URL Rewriters](https://flexget.com/URLRewriters) 模板中已经包含了 CinemaGeddon 的下载链接替换模板，都不需要我自己来写了。
 但是也有个蛋疼的问题，Flexget 对于特殊字符的 urlrewrite 存在问题，导致下载形如 `Los Días Calientes [Argentina] [1966/WEB-DL/x264] (Comedy)` 的种子的时候会失败。
-2. Cinematik 的 RSS 链接里带了 key，为什么还需要 Cookies？
-TIK 真的是蛋疼，查看源码后你会看到它有三种 RSS 链接
-![b2bc2a1dfceaa8ff7e4d95a4c85169b4.png](en-resource://database/5177:0)
 
-我第一反应就是，这个 `direct download` 应该就是可以直接下载且带 passkey 的（链接里都写着 key 了）——但实际上并不是。打开链接后打开这个 RSS 链接后你会发现，这个 RSS 源确实给了你下载链接，不需要你 rewrite url 了，但是下载链接不带 passkey，你还是需要配置 cookies
-![f8acad8f4239ed25fc1f9282cfd046c3.png](en-resource://database/5175:0)
-此外这个 RSS 源里还有一个不带 key 的 direct download RSS 链接，效果和带 key 的是一样的：https://www.cinematik.net/rsstik-direct.xml，然而这个链接你在 Tik 种子页面的源码里是找不到的……
+2. Cinematik 的 RSS 链接里带了 key，为什么还需要 Cookies？  
+TIK 真的是蛋疼，查看源码后你会看到它有三种 RSS 链接  
+![TIK-1](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-1.png)
+
+我第一反应就是，这个 `direct download` 应该就是可以直接下载且带 passkey 的（链接里都写着 key 了）——但实际上并不是。打开链接后打开这个 RSS 链接后你会发现，这个 RSS 源确实给了你下载链接，不需要你 rewrite url 了，但是下载链接不带 passkey，你还是需要配置 cookies  
+![TIK-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-2.png)
+此外这个 RSS 源里还有一个不带 key 的 direct download RSS 链接，效果和带 key 的是一样的：https://www.cinematik.net/rsstik-direct.xml，然而这个链接你在 Tik 种子页面的源码里是找不到的……  
 
 
 
