@@ -9,7 +9,7 @@
 2. 本教程只讲解 RSS，AutoDL-Irssi 不在本文范围内，也不要问我什么时候写 AutoDL-Irssi 的教程
 3. 本文还没有写完！！！
 
-### 0. 碎碎念
+## 0. 碎碎念
 
 在我所知范围内，Seedbox 上的 RSS 方式主要有以下几种：
 1. ruTorrent RSS 插件实现 RSS
@@ -36,7 +36,7 @@
 
 本文目前只介绍 ruTorrent RSS 和 Flexget RSS（其他的有可能以后加，但目前没计划写）  
 
-### 1. 寻找 RSS 源
+## 1. 寻找 RSS 源
 
 我刷过的绝大多数站点都提供了 RSS 功能，有的站点的 RSS 功能比较强大（比如 AvistaZ 系列），有的比较简陋（比如 AsianDVDClub），但总比没有强（比如 HD-Spain 就没 RSS）。  
 有时候站点有 RSS 却不能被轻易找到，甚至索性有的站点页面上就找不到 RSS 的按钮。我个人推荐查看页面源代码的方式寻找 RSS 源，这个办法寻找 RSS 源比较便捷。如果这个办法还没找到，再去页面上看看、FAQ/WiKi 找找、论坛里搜索看看，都找不到的话基本上可以确定这个站点没提供 RSS 功能。  
@@ -66,7 +66,7 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 
 
 
-### 2. 获取 Cookies
+## 2. 获取 Cookies
 
 由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassic），无法直接在盒子上下载种子，因此需要使用 cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）  
 获取 Cookies 的办法有很多种，比如可以用 [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg) 插件导出，或者按照下图操作：
@@ -87,10 +87,14 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 复制下来的格式形如：`__cfduid=abcd123456789; uid=12450; pass=123sometimesnaive` 就没问题了
 
 
-### 3. 配置 RSS
-Flexget 和 ruTorrent 的详细 RSS 配置我先略过了，以后有空再写，反正大多数人都会了，我这里就先说需要 Cookies 和 url_rewrite 的情况
 
-先是 Flexget 的模板，直接上配置文件：
+
+## 3. 配置 RSS
+Flexget 和 ruTorrent 的详细 RSS 配置我先略过了，以后有空再写，反正大多数人都会了，我这里就先说需要 Cookies 和 url_rewrite 的情况  
+
+### Flexget RSS
+
+先是 Flexget 的模板，直接上配置文件：  
 
 ```YAML
 tasks:
@@ -121,32 +125,35 @@ tasks:
 简单地讲解下：
 
 [headers](https://flexget.com/Plugins/headers)：这个插件可以修改 request headers（请求头）。刚才在获取 Cookies 那一章里提到过这个东西，这个插件改的就是这个。一般让 headers 里带上 cookies 就行（有些情况下可能还需要修改 User-Agent）
-PS：也可以用 Flexget 的 [cookies](https://flexget.com/Plugins/cookies) 来搞定 cookies，不过我觉得还是用 headers 更方便
+PS：也可以用 Flexget 的 [cookies](https://flexget.com/Plugins/cookies) 来搞定 cookies，不过我觉得还是用 headers 更方便  
 
 另外实测 `__cfduid` 和 `PHPSESSID` 其实不写也没事，不过既然都复制下来了，写上去也无妨……
 
-[urlrewrite](https://flexget.com/Plugins/urlrewrite)：对 RSS 源里给出的网址进行替换。将原本形如 http://asiandvdclub.org/details.php?id=123456 的种子描述页面链接替换为形如 http://asiandvdclub.org/download.php?id=123456 的种子下载链接
+[urlrewrite](https://flexget.com/Plugins/urlrewrite)：对 RSS 源里给出的网址进行替换。将原本形如 `http://asiandvdclub.org/details.php?id=123456` 的种子描述页面链接替换为形如 `http://asiandvdclub.org/download.php?id=123456` 的种子下载链接
 
 你可能会有一些疑问：
-1. CinemaGeddon 的 RSS 下载链接其实是要替换的，我却没配置 urlrewrite？  
-这是因为，Flexget 自带的 [URL Rewriters](https://flexget.com/URLRewriters) 模板中已经包含了 CinemaGeddon 的下载链接替换模板，都不需要我自己来写了。
-但是也有个蛋疼的问题，Flexget 对于特殊字符的 urlrewrite 存在问题，导致下载形如 `Los Días Calientes [Argentina] [1966/WEB-DL/x264] (Comedy)` 的种子的时候会失败。
+【1】CinemaGeddon 的 RSS 下载链接其实是要替换的，为什么没配置 urlrewrite？  
+这是因为，Flexget 自带的 `[URL Rewriters](https://flexget.com/URLRewriters)` 模板中已经包含了 CinemaGeddon 的下载链接替换模板，都不需要我自己来写了。  
+但是也有个蛋疼的问题，Flexget 对于特殊字符的 urlrewrite 存在问题，导致下载形如 `Los Días Calientes [Argentina] [1966/WEB-DL/x264] (Comedy)` 的种子的时候会失败，这种时候如果能不用自带的模板下载种子的话反而能避开这个问题  
+这个问题我暂时还没研究如何解决，要么去给官方反应问题等待官方修复，要么自己把这个插件禁用掉（我也还没试过怎么禁用）  
 
-2. Cinematik 的 RSS 链接里带了 key，为什么还需要 Cookies？  
-TIK 真的是蛋疼，查看源码后你会看到它有三种 RSS 链接  
+【2】Cinematik 的 RSS 链接里带了 key，为什么还需要 Cookies？  
+Tik 真的是蛋疼，查看源码后你会看到它有三种 RSS 链接  
 ![TIK-1](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-1.png)
 
 我第一反应就是，这个 `direct download` 应该就是可以直接下载且带 passkey 的（链接里都写着 key 了）——但实际上并不是。打开链接后打开这个 RSS 链接后你会发现，这个 RSS 源确实给了你下载链接，不需要你 rewrite url 了，但是下载链接不带 passkey，你还是需要配置 cookies  
 ![TIK-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-2.png)
-此外这个 RSS 源里还有一个不带 key 的 direct download RSS 链接，效果和带 key 的是一样的：https://www.cinematik.net/rsstik-direct.xml，然而这个链接你在 Tik 种子页面的源码里是找不到的……  
+此外这个 RSS 源里还有一个不带 key 的 direct download RSS 链接，效果和带 key 的是一样的：`https://www.cinematik.net/rsstik-direct.xml`，然而这个链接你在 Tik 种子页面的源码里是找不到的……  
 
 
 
 
 
 
+### ruTorrent RSS
 
-ruTorrent 也支持 url_rewrite 和 cookies，教程以后再写……写 flexget 写了我好几个小时了，没耐心了。。。
+ruTorrent 也支持 url_rewrite 和 cookies，教程以后再写……  
+写 flexget 写了我好几个小时了，没耐心了。。。
 
 
 
