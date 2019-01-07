@@ -170,12 +170,12 @@ ruTorrent 不仅支持正则，还支持 url_rewrite 和 cookies，也足够满�
 
 ### ruTorrent RSS min Interval
 
-先说个设置方面的问题，可能不少人都发现了，ruTorrent RSS 的间隔似乎不能设定到 2 分钟以内，这对于某些需要争分夺秒却又没有 AutoDL-Irssi 用的刷流环境并不合适。实际上这是 ruTorrent RSS 插件自带的一个限制，[代码见此](https://github.com/Novik/ruTorrent/blob/master/plugins/rss/conf.php#L7)。
-那我们要做的事情就很简单了，改下 RSS 设置即可。这个设置无法在 ruTorrent 上修改，你需要修改 `ruTorrent路径/plugins/rss/conf.php`  
+先说个设置方面的问题，可能不少人都发现了，ruTorrent RSS 的间隔似乎不能设定到 2 分钟以内，这对于某些需要争分夺秒却又没有 AutoDL-Irssi 用的刷流环境并不合适。实际上这是 ruTorrent RSS 插件自带的一个限制，[代码见此](https://github.com/Novik/ruTorrent/blob/master/plugins/rss/conf.php#L7)  
+这个限值无法在 ruTorrent 上修改，需要修改 `ruTorrent路径/plugins/rss/conf.php`，下边列出一些路径供参考：  
 
-`rtinst` 脚本（`inexistence` 用的就是 `rtinst`）安装的 ruTorrent，这个路径是  
+[rtinst](https://github.com/arakasi72/rtinst) 脚本（[inexistence](https://github.com/Aniverse/inexistence) 用的也是 [rtinst](https://github.com/Aniverse/rtinst)）安装的 ruTorrent，这个路径是  
 `/var/www/rutorrent/plugins/rss/conf.php`  
-`QuickBox` 脚本  
+[QuickBox](https://github.com/QuickBox/QB) 脚本  
 `/srv/rutorrent/plugins/rss/conf.php`  
 Feral Hosting  
 `~/www/你的用户名.机器名/public_html/rutorrent/plugins/rss/conf.php`  
