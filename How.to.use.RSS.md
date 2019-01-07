@@ -6,9 +6,8 @@
 然后，如果有大佬看上本文需要转载的，请注明出处  
 
 另外在阅读本文之前，你需要知道的：
-1. 本教程使用 Chrome 浏览器来讲解，其他浏览器用户自己看着办，要做的事情是一样的，操作上有点区别罢了
-2. 本教程只讲解 RSS，AutoDL-Irssi 不在本文范围内，也不要问我什么时候写 AutoDL-Irssi 的教程
-3. 本文还没有写完！！！
+1. 本教程只讲解 RSS，AutoDL-Irssi 不在本文范围内，也不要问我什么时候写 AutoDL-Irssi 的教程
+2. 本文还没有写完！！！
 
 ## 0. 碎碎念
 
@@ -67,6 +66,8 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 
 
 # 2. 获取 Cookies
+
+**注意**：本教程使用 Chrome 浏览器来讲解，其他浏览器用户请自行搜索获取 Cookies 的办法  
 
 由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassic），无法直接在盒子上下载种子，因此需要使用 cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）  
 获取 Cookies 的办法有很多种，比如可以用 [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg) 插件导出，或者按照下图操作：
