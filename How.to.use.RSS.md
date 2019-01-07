@@ -3,6 +3,7 @@
 
 首先，本文作者水平也不咋样，欢迎各位大佬们补充、指正错误，求轻喷  
 其次，由于篇幅和作者水平有限，很多更进一步的用法你需要自己研究，可以看官方文档甚至是软件的源码（因为有时候官方文档写得不够清楚……）  
+然后，如果有大佬看上本文需要转载的，请注明出处  
 
 另外在阅读本文之前，你需要知道的：
 1. 本教程使用 Chrome 浏览器来讲解，其他浏览器用户自己看着办，要做的事情是一样的，操作上有点区别罢了
@@ -158,8 +159,108 @@ Tik 真的是蛋疼，查看源码后你会看到它有三种 RSS 链接
 
 ### ruTorrent RSS
 
-ruTorrent 也支持 url_rewrite 和 cookies，教程以后再写……  
-写 flexget 写了我好几个小时了，没耐心了。。。
+ruTorrent 不仅支持正则，还支持 url_rewrite 和 cookies，也足够满足大多数情况下的 RSS 需求了。  
+
+
+#### ruTorrent RSS min Interval
+
+先说个设置方面的问题，可能不少人都发现了，ruTorrent RSS 的间隔似乎不能设定到 2 分钟以内，这对于某些需要争分夺秒却又没有 AutoDL-Irssi 用的刷流环境并不合适。实际上这是 ruTorrent RSS 插件自带的一个限制，[代码见此](https://github.com/Novik/ruTorrent/blob/master/plugins/rss/conf.php#L7)。
+那我们要做的事情就很简单了，改下 RSS 设置即可。这个设置无法在 ruTorrent 上修改，你需要修改 `ruTorrent路径/plugins/rss/conf.php`  
+
+`rtinst` 脚本（`inexistence` 用的就是 `rtinst`）安装的 ruTorrent，这个路径是  
+`/var/www/rutorrent/plugins/rss/conf.php`
+`QuickBox` 脚本（`inexistence` 用的就是 `rtinst`）安装的 ruTorrent，这个路径是  
+`/srv/rutorrent/plugins/rss/conf.php`
+Feral Hosting  
+`~/www/你的用户名.机器名/public_html/rutorrent/plugins/rss/conf.php`
+Pulsed Media  
+`~/www/rutorrent/plugins/rss/conf.php`
+Seedboxes.cc（这家直接帮你改成 1 分钟了，都不用不着你自己改）  
+`/home/user/.www/rutorrent/plugins/rss/conf.php`
+SeedHost／UltraSeedBox 我现在手上没机器没法帮你找，反正就在 www 目录下，应该不难找  
+
+用这行命令修改
+`sed -i "s/\$minInterval = .*\;/\$minInterval = 2\;/" conf.php_的路径`
+
+什么？1 分钟你还嫌不够快？那你自己改代码吧……  
+警告：RSS 频率太高可能会导致站点认为你在对站点进行攻击，或者恶意 RSS，轻则 ban 盒子 IP，重则 ban 号（当然，也可能什么也不会发生）  
+
+
+#### ruTorrent Cookies
+
+ruTorrent 通用的 Cookies 在设置里：  
+
+![ruTorrent-RSS-Cookies-1](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-RSS-Cookies-1.png)  
+
+按照我这个格式写就行了：
+```
+asiandvdclub.org|uid=654321;pass=2young2simple;
+cinematik.net|xuid=12345;xpass=s0met1mesna1ve;
+```
+然后你直接用形如 `https://asiandvdclub.org/download.php?id=117677` 的链接就能直接添加到 rTorrent 上了  
+
+不过似乎这个 Cookies 对 RSS 无效，对于需要 Cookies 的 RSS 源，你应该这么填写 Cookie：  
+
+![ruTorrent-RSS-Cookies-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-RSS-Cookies-2.png)  
+
+```
+http://cinemageddon.net/rss.xml:COOKIE:uid=20020228;pass=tungcheehwa
+https://www.cinematik.net/rsstik-direct.xml:COOKIE:xuid=20020228;xpass=tungcheehwa
+```
+
+#### ruTorrent RSS-Url-Rewrite
+
+配置完 Cookies 后你会发现有些站点已经可以下载了（比如 RacingForMe，Cinematik），有些站点还是无法下载，这是因为报道上出现了偏差，这时候就需要 `rssurlrewrite` 了  
+首先，随便选种一个 RSS 到的项目，右键——规则管理：
+
+![ruTorrent-urlrewrite-1.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-1.png)  
+
+按照我图中的设置操作：
+
+![ruTorrent-urlrewrite-2.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-2.png)  
+![ruTorrent-urlrewrite-3.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-3.png)  
+
+在规则调试的测试中输入 RSS 源中的 URL，按下 `?` 按钮测试规则是否能正常执行，没问题的话基本上就没问题了，实际 RSS 还出问题的话检查下你 RSS 链接中的 Cookies 有没有写错  
+提供现成的模板供 Ctrl+C  
+
+```
+|http://cinemageddon.net/details.php?id=(\d+)|i
+http://cinemageddon.net/download.php?id=/${1}&name=${1}.torrent
+
+|http://asiandvdclub.org/details.php\?id=(\d+)|i
+http://asiandvdclub.org/download.php?id=${1}
+```
+
+其他站点要怎么写，举一反三吧  
+
+#### temp end
+先写到这里了，剩下的以后有心情再写  
+
+
+
+
+### To Do List
+
+以下内容无限期 coming sooooooooon，并且随时可能弃坑：  
+
+1. ruTorrent 正则的简单用法（体积过滤等）（其实很多英文教程不错的）  
+2. ruTorrent RSS 入门级教程（大多数人都会不用写也行）  
+3. Flexget RSS 入门级教程（其实这类教程满大街都是了，我也在配置文件模板里写过）  
+4. qBittorrent RSS 入门级教程  
+5. Deluge YaRSS2 RSS 入门级教程  
+6. Flood RSS 入门级教程  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
