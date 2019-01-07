@@ -198,11 +198,11 @@ Seedboxes.cc（这家直接帮你改成 1 分钟了，都用不着你自己改�
 至于 SeedHost／UltraSeedBox 等盒子，我现在没机器没法找，反正也在 www 目录下，不难找；其他脚本装的也同理  
 
 文件找到以后，用这行命令修改  
-`sed -i "s/\$minInterval = .*\;/\$minInterval = 2\;/" conf.php_的路径`  
+`sed -i "s/\$minInterval = .*\;/\$minInterval = 1\;/" conf.php_的路径`  
 
 什么？1 分钟你还嫌不够快？那你自己改代码吧……  
-**警告**：RSS 频率太高可能会导致站点认为你在对站点进行攻击，或者恶意使用 RSS，轻则 ban 盒子 IP，重则 ban 号  
-      （当然，也可能什么也不会发生……）  
+**警告**：RSS 频率太高可能会导致被判定为 ddos 或恶意 RSS，轻则 ban 盒子 IP，重则 ban 号（也可能什么也不会发生……）  
+
 
 
 ### ruTorrent Cookies
@@ -215,9 +215,9 @@ ruTorrent 通用的 Cookies 在设置里：
 asiandvdclub.org|uid=654321;pass=2young2simple;
 cinematik.net|xuid=12345;xpass=s0met1mesna1ve;
 ```
-然后你直接用形如 `https://asiandvdclub.org/download.php?id=117677` 的链接就能直接添加到 rTorrent 上了  
+然后你加种时直接用类似 `https://asiandvdclub.org/download.php?id=117677` 的链接就能直接添加到 rTorrent 上了  
 
-不过似乎这个 Cookies 对 RSS 无效，对于需要 Cookies 的 RSS 源，你应该这么填写 Cookie：  
+不过似乎这个 Cookies 对 RSS 无效，对于需要 Cookies 的 RSS 源，你应该这么填写 Cookies：  
 
 ![ruTorrent-RSS-Cookies-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-RSS-Cookies-2.png)  
 
