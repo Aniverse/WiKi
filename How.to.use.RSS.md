@@ -34,9 +34,9 @@
 
 最常见的是 ruTorrent RSS，Flexget RSS 在国内盒子用户里使用率还行但是似乎国外用的不多（仅仅是我的猜测，因为很多脚本都不提供 Flexget 的安装，Seedbox Provider 也基本上没有提供 Flexget 的预装或者一键安装的？）  
 
-本文目前只介绍 ruTorrent RSS 和 Flexget RSS（其他的有可能以后加，但目前没计划写）  
+本文目前只介绍 ruTorrent RSS 和 Flexget RSS  
 
-## 1. 寻找 RSS 源
+# 1. 寻找 RSS 源
 
 我刷过的绝大多数站点都提供了 RSS 功能，有的站点的 RSS 功能比较强大（比如 AvistaZ 系列），有的比较简陋（比如 AsianDVDClub），但总比没有强（比如 HD-Spain 就没 RSS）。  
 有时候站点有 RSS 却不能被轻易找到，甚至索性有的站点页面上就找不到 RSS 的按钮。我个人推荐查看页面源代码的方式寻找 RSS 源，这个办法寻找 RSS 源比较便捷。如果这个办法还没找到，再去页面上看看、FAQ/WiKi 找找、论坛里搜索看看，都找不到的话基本上可以确定这个站点没提供 RSS 功能。  
@@ -66,34 +66,40 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 
 
 
-## 2. 获取 Cookies
+# 2. 获取 Cookies
 
 由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassic），无法直接在盒子上下载种子，因此需要使用 cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）  
 获取 Cookies 的办法有很多种，比如可以用 [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg) 插件导出，或者按照下图操作：
 
-![CG-4](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-4.png)
-![CG-5](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-5.png)
+![CG-4](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-4.png)  
+![CG-5](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-5.png)  
 
 这里 cookies 有三个值，实测 `__cfduid` 不用写也可以用于 RSS  
 
 本文再介绍一种我个人在用的复制 Cookies 的办法：（大佬们如有更便捷的方案，欢迎告知）
 1. Chrome 浏览器，标签页切换到你要获取 cookies 的站点，按下快捷键 `F12` 打开控制台，切换到 Network
-![CG-6](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-6.png)
+
+![CG-6](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-6.png)  
+
 2. 按下 `F5`，刷新页面
-![CG-7](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-7.png)
+
+![CG-7](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-7.png)  
+
 点第一个 `details.php?id=217348`，也就是和网址一样的那个
 3. 直接复制 `Request Headers` 里 `Cookies` 那一栏就可以了。值得注意的是 `User-Agent`，有些情况下我们需要修改 UA  
-![CG-8](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-8.png)
+
+![CG-8](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-8.png)  
+
 复制下来的格式形如：`__cfduid=abcd123456789; uid=12450; pass=123sometimesnaive` 就没问题了
 
 
 
 
-## 3. 配置 RSS
+# 3. 配置 RSS
 
 Flexget 和 ruTorrent 的详细 RSS 配置我先略过了，以后有空再写，反正大多数人都会了，我这里就先说需要 Cookies 和 url_rewrite 的情况  
 
-### Flexget RSS
+## Flexget RSS
 
 先是 Flexget 的模板，直接上配置文件：  
 
@@ -157,42 +163,41 @@ Tik 真的是蛋疼，查看源码后你会看到它有三种 RSS 链接
 
 
 
-### ruTorrent RSS
+## ruTorrent RSS
 
 ruTorrent 不仅支持正则，还支持 url_rewrite 和 cookies，也足够满足大多数情况下的 RSS 需求了。  
 
 
-#### ruTorrent RSS min Interval
+### ruTorrent RSS min Interval
 
 先说个设置方面的问题，可能不少人都发现了，ruTorrent RSS 的间隔似乎不能设定到 2 分钟以内，这对于某些需要争分夺秒却又没有 AutoDL-Irssi 用的刷流环境并不合适。实际上这是 ruTorrent RSS 插件自带的一个限制，[代码见此](https://github.com/Novik/ruTorrent/blob/master/plugins/rss/conf.php#L7)。
 那我们要做的事情就很简单了，改下 RSS 设置即可。这个设置无法在 ruTorrent 上修改，你需要修改 `ruTorrent路径/plugins/rss/conf.php`  
 
 `rtinst` 脚本（`inexistence` 用的就是 `rtinst`）安装的 ruTorrent，这个路径是  
-`/var/www/rutorrent/plugins/rss/conf.php`
+`/var/www/rutorrent/plugins/rss/conf.php`  
 `QuickBox` 脚本（`inexistence` 用的就是 `rtinst`）安装的 ruTorrent，这个路径是  
-`/srv/rutorrent/plugins/rss/conf.php`
+`/srv/rutorrent/plugins/rss/conf.php`  
 Feral Hosting  
-`~/www/你的用户名.机器名/public_html/rutorrent/plugins/rss/conf.php`
+`~/www/你的用户名.机器名/public_html/rutorrent/plugins/rss/conf.php`  
 Pulsed Media  
-`~/www/rutorrent/plugins/rss/conf.php`
+`~/www/rutorrent/plugins/rss/conf.php`  
 Seedboxes.cc（这家直接帮你改成 1 分钟了，都不用不着你自己改）  
-`/home/user/.www/rutorrent/plugins/rss/conf.php`
+`/home/user/.www/rutorrent/plugins/rss/conf.php`  
 SeedHost／UltraSeedBox 我现在手上没机器没法帮你找，反正就在 www 目录下，应该不难找  
 
-用这行命令修改
-`sed -i "s/\$minInterval = .*\;/\$minInterval = 2\;/" conf.php_的路径`
+用这行命令修改  
+`sed -i "s/\$minInterval = .*\;/\$minInterval = 2\;/" conf.php_的路径`  
 
 什么？1 分钟你还嫌不够快？那你自己改代码吧……  
 警告：RSS 频率太高可能会导致站点认为你在对站点进行攻击，或者恶意 RSS，轻则 ban 盒子 IP，重则 ban 号（当然，也可能什么也不会发生）  
 
 
-#### ruTorrent Cookies
+### ruTorrent Cookies
 
 ruTorrent 通用的 Cookies 在设置里：  
 
 ![ruTorrent-RSS-Cookies-1](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-RSS-Cookies-1.png)  
 
-按照我这个格式写就行了：
 ```
 asiandvdclub.org|uid=654321;pass=2young2simple;
 cinematik.net|xuid=12345;xpass=s0met1mesna1ve;
@@ -208,7 +213,7 @@ http://cinemageddon.net/rss.xml:COOKIE:uid=20020228;pass=tungcheehwa
 https://www.cinematik.net/rsstik-direct.xml:COOKIE:xuid=20020228;xpass=tungcheehwa
 ```
 
-#### ruTorrent RSS-Url-Rewrite
+### ruTorrent RSS-Url-Rewrite
 
 配置完 Cookies 后你会发现有些站点已经可以下载了（比如 RacingForMe，Cinematik），有些站点还是无法下载，这是因为报道上出现了偏差，这时候就需要 `rssurlrewrite` 了  
 首先，随便选种一个 RSS 到的项目，右键——规则管理：
@@ -217,11 +222,8 @@ https://www.cinematik.net/rsstik-direct.xml:COOKIE:xuid=20020228;xpass=tungcheeh
 
 按照我图中的设置操作：
 
-![ruTorrent-urlrewrite-2.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-2.png)  
 ![ruTorrent-urlrewrite-3.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-3.png)  
-
-在规则调试的测试中输入 RSS 源中的 URL，按下 `?` 按钮测试规则是否能正常执行，没问题的话基本上就没问题了，实际 RSS 还出问题的话检查下你 RSS 链接中的 Cookies 有没有写错  
-提供现成的模板供 Ctrl+C  
+![ruTorrent-urlrewrite-2.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-2.png)  
 
 ```
 |http://cinemageddon.net/details.php?id=(\d+)|i
@@ -231,15 +233,16 @@ http://cinemageddon.net/download.php?id=/${1}&name=${1}.torrent
 http://asiandvdclub.org/download.php?id=${1}
 ```
 
-其他站点要怎么写，举一反三吧  
+在规则调试的测试中输入 RSS 源中的 URL，按下 `?` 按钮测试规则是否能正常执行  
+至于其他站点的规则要怎么写，举一反三吧  
 
-#### temp end
+### temp end
 先写到这里了，剩下的以后有心情再写  
 
 
 
 
-### To Do List
+## To Do List
 
 以下内容无限期 coming sooooooooon，并且随时可能弃坑：  
 
