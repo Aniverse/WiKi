@@ -181,10 +181,10 @@ Feral Hosting
 `~/www/你的用户名.机器名/public_html/rutorrent/plugins/rss/conf.php`  
 Pulsed Media  
 `~/www/rutorrent/plugins/rss/conf.php`  
-Seedboxes.cc（这家直接帮你改成 1 分钟了，都不用不着你自己改）  
+Seedboxes.cc（这家直接帮你改成 1 分钟了，都用不着你自己改）  
 `/home/user/.www/rutorrent/plugins/rss/conf.php`  
 
-至于 SeedHost／UltraSeedBox 我现在手上没机器没法帮你找，反正就在 www 目录下，应该不难找；其他同理  
+至于 SeedHost／UltraSeedBox 等盒子，我现在手上没机器没法帮你找，反正就在 www 目录下，应该不难找；其他脚本装的也同理  
 
 文件找到以后，用这行命令修改  
 `sed -i "s/\$minInterval = .*\;/\$minInterval = 2\;/" conf.php_的路径`  
@@ -248,10 +248,10 @@ http://asiandvdclub.org/download.php?id=${1}
 
 以下内容无限期 coming sooooooooon，并且随时可能弃坑：  
 
-1. ruTorrent 正则的简单用法（体积过滤等）（其实很多英文教程不错的）  
-2. ruTorrent RSS 入门级教程（大多数人都会不用写也行）  
-3. Flexget RSS 入门级教程（其实这类教程满大街都是了，我也在配置文件模板里写过）  
-4. qBittorrent RSS 入门级教程  
+1. ruTorrent 正则的简单用法（体积过滤等）（其实已经有很多现成的英文教程）  
+2. ruTorrent RSS 入门级教程（其实大多数人都会）  
+3. Flexget RSS 入门级教程（已经烂大街，我也在配置文件模板里写过）  
+4. qBittorrent RSS 入门级教程（不用教也会系列）  
 5. Deluge YaRSS2 RSS 入门级教程  
 6. Flood RSS 入门级教程  
 
