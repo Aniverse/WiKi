@@ -74,6 +74,7 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 **注意**：本教程使用 Chrome 浏览器来讲解，其他浏览器用户请自行搜索获取 Cookies 的办法  
 
 由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassic），无法直接在盒子上下载种子，因此需要使用 cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）  
+
 获取 Cookies 的办法有很多种，比如可以用 [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg) 插件导出，或者按照下图操作：
 
 ![CG-4](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-4.png)  
@@ -81,7 +82,8 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 
 这里 cookies 有三个值，实测 `__cfduid` 不用写也可以用于 RSS  
 
-本文再介绍一种我个人在用的复制 Cookies 的办法：（大佬们如有更便捷的方案，欢迎告知）
+本文再介绍一种我个人在用的复制 Cookies 的办法：（大佬们如有更便捷的方案，欢迎告知）  
+
 1. Chrome 浏览器，标签页切换到你要获取 cookies 的站点，按下快捷键 `F12` 打开控制台，切换到 Network
 
 ![CG-6](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-6.png)  
@@ -90,7 +92,8 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 
 ![CG-7](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-7.png)  
 
-点第一个 `details.php?id=217348`，也就是和网址一样的那个
+点第一个 `details.php?id=217348`，也就是和网址一样的那个  
+
 3. 直接复制 `Request Headers` 里 `Cookies` 那一栏就可以了。值得注意的是 `User-Agent`，有些情况下我们需要修改 UA  
 
 ![CG-8](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-8.png)  
@@ -102,7 +105,7 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 
 # 3. 配置 RSS
 
-Flexget 和 ruTorrent 的详细 RSS 配置我先略过了，以后有空再写，反正大多数人都会了，我这里就先说需要 Cookies 和 url_rewrite 的情况  
+Flexget 和 ruTorrent 的入门级 RSS 配置我先略过了，我这里就先说需要 Cookies 和 url_rewrite 的情况  
 
 ## Flexget RSS
 
