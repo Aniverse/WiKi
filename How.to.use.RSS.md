@@ -73,14 +73,14 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 
 **注意**：本教程使用 Chrome 浏览器来讲解，其他浏览器用户请自行搜索获取 Cookies 的办法  
 
-由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassic），无法直接在盒子上下载种子，因此需要使用 cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）  
+由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassic），无法直接在盒子上下载种子，因此需要使用 Cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）  
 
 获取 Cookies 的办法有很多种，比如可以用 [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg) 插件导出，或者按照下图操作：
 
 ![CG-4](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-4.png)  
 ![CG-5](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-5.png)  
 
-这里 cookies 有三个值，实测 `__cfduid` 不用写也可以用于 RSS  
+这里 Cookies 有三个值，实测 `__cfduid` 不用写也可以用于 RSS  
 
 本文再介绍一种我个人在用的复制 Cookies 的办法：（大佬们如有更便捷的方案，欢迎告知）  
 
@@ -139,8 +139,8 @@ tasks:
 
 简单地讲解下：
 
-**[headers](https://flexget.com/Plugins/headers)**：这个插件可以修改 request headers（请求头）。刚才在获取 Cookies 那一章里提到过这个东西，这个插件改的就是这个。一般让 headers 里带上 cookies 就行（有些情况下可能还需要修改 User-Agent）
-PS：也可以用 Flexget 的 [cookies](https://flexget.com/Plugins/cookies) 来搞定 cookies，不过我觉得还是用 headers 更方便  
+**[headers](https://flexget.com/Plugins/headers)**：这个插件可以修改 request headers（请求头）。刚才在获取 Cookies 那一章里提到过这个东西，这个插件改的就是这个。一般让 headers 里带上 cookies 就行（有些情况下可能还需要修改 User-Agent）  
+PS：也可以用 Flexget 的 [Cookies](https://flexget.com/Plugins/cookies) 来搞定 cookies，不过我觉得还是用 headers 更方便  
 
 另外实测 `__cfduid` 和 `PHPSESSID` 其实不写也没事，不过既然都复制下来了，写上去也无妨……
 
@@ -247,9 +247,11 @@ http://asiandvdclub.org/download.php?id=${1}
 ```
 
 在规则调试的测试中输入 RSS 源中的 URL，按下 `?` 按钮测试规则是否能正常执行  
+
 至于其他站点的规则要怎么写，举一反三吧  
 
 ### temp end
+
 先写到这里了，剩下的以后有心情再写  
 
 
