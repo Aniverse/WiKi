@@ -229,7 +229,7 @@ https://www.cinematik.net/rsstik-direct.xml:COOKIE:xuid=20020228;xpass=tungcheeh
 ### ruTorrent RSS-Url-Rewrite
 
 配置完 Cookies 后你会发现有些站点已经可以下载了（比如 RacingForMe，Cinematik），有些站点还是无法下载，这是因为报道上出现了偏差，这时候就需要 `rssurlrewrite` 了  
-首先，随便选种一个 RSS 到的项目，右键——规则管理：
+首先，随便选中一个 RSS 到的项目，右键——规则管理：
 
 ![ruTorrent-urlrewrite-1.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-1.png)  
 
@@ -248,7 +248,7 @@ http://asiandvdclub.org/download.php?id=${1}
 
 在规则调试的测试中输入 RSS 源中的 URL，按下 `?` 按钮测试规则是否能正常执行  
 
-至于其他站点的规则要怎么写，举一反三吧  
+至于其他站点的规则要怎么写，读者们自己举一反三吧  
 
 ### temp end
 
