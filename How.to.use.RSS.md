@@ -61,7 +61,11 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 如果你直接用 `http://cinemageddon.net/download.php?id=217348` 下载，会得到 `download.php` 这个文件，但其实这也是一个种子文件，就是后缀名不对罢了  
 因此，后边的 `name=XXX` 这一串其实意义不大，我们要做的就是把 `details` 这个词替换成 `download`，这一操作要如何完成，在之后讲解  
 
+再来几个其他站点寻找 RSS 源的例子：
 
+![RSS-HDForever](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/RSS-HDForever.png)
+![RSS-WiHD](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/RSS-WiHD.png)
+![RSS-Bibliotik](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/RSS-Bibliotik.png)
 
 
 
