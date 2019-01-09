@@ -116,7 +116,7 @@ tasks:
   AsianDVDClub:
     rss: http://asiandvdclub.org/rss.xml
     headers:
-      Cookie:"__cfduid=abcd123456789; uid=123456; pass=123sometimesnaive; punbb_cookie=a%abcd123456789; PHPSESSID=abcd123456789"
+      Cookie:"uid=12345; pass=shang3dalaohu"
     urlrewrite:
       sitename:
         regexp: 'http://asiandvdclub.org/details.php\?id=(?P<id>\d+)'
@@ -124,9 +124,9 @@ tasks:
     accept_all: yes
     download: /home/aniverse/deluge/watch
   Cinematik:
-    rss: https://www.cinematik.net/rss.php?key=JzKZN8V88gmSw43B&which=3
+    rss: https://www.cinematik.net/rss.php?key=kkkkeeeeyyyyy&which=3
     headers:
-      Cookie: "__cfduid=abcd123456789; xuid=123456; xpass=123sometimesnaive; PHPSESSID=abcd123456789"
+      Cookie: "__cfduid=abcd123456789; xuid=123456; xpass=qiugeaomyaoqing; PHPSESSID=baozhengjiangyou"
     accept_all: yes
     download: /home/aniverse/deluge/watch
   CinemaGeddon:
@@ -135,14 +135,27 @@ tasks:
       Cookie: "__cfduid=abcd123456789; uid=12450; pass=123sometimesnaive"
     accept_all: yes
     download: /home/aniverse/deluge/watch
+  RFM:
+    rss: https://www.racingfor.me/rss/12345/pppppassskkkkkeeyyy
+    accept_all: yes
+    headers:
+      Cookie: "uid=92752; idh=abcdefghiklmnopqrstuvwxyz0123456789; PHPSESSID=shangmianshaolegezimua"
+    download: /home/aniverse/deluge/watch
+  ILoveClassics:
+    rss: http://www.iloveclassics.com/rss.php?feedtype=download&timezone=1&showrows=10&categories=all
+    accept_all: yes
+    headers:
+      User-Agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0"
+      Cookie: "c_secure_uid=qiuhdo; c_secure_pass=qiub2s; c_secure_login=qiubtgigs; PHPSESSID=qiuqiuqiu"
+    download: /home/aniverse/deluge/watch
 ```
 
 简单地讲解下：
 
-**[headers](https://flexget.com/Plugins/headers)**：这个插件可以修改 request headers（请求头）。刚才在获取 Cookies 那一章里提到过这个东西，这个插件改的就是这个。一般让 headers 里带上 cookies 就行（有些情况下可能还需要修改 User-Agent）  
+**[headers](https://flexget.com/Plugins/headers)**：这个插件可以修改 request headers（请求头）。刚才在获取 Cookies 那一章里提到过这个东西，这个插件改的就是这个。一般让 headers 里带上 cookies 就行（有些情况下可能需要修改 User-Agent）  
 PS：也可以用 Flexget 的 [Cookies](https://flexget.com/Plugins/cookies) 来搞定 cookies，不过我觉得还是用 headers 更方便  
 
-另外实测 `__cfduid` 和 `PHPSESSID` 其实不写也没事，不过既然都复制下来了，写上去也无妨……
+另外实测 `__cfduid` 和 `PHPSESSID` 之类的其实不写也没事，不过既然都复制下来了，写上去也无妨……
 
 **[urlrewrite](https://flexget.com/Plugins/urlrewrite)**：对 RSS 源里给出的网址进行替换。将原本形如 `http://asiandvdclub.org/details.php?id=123456` 的种子描述页面链接替换为形如 `http://asiandvdclub.org/download.php?id=123456` 的种子下载链接
 
@@ -229,18 +242,18 @@ https://www.cinematik.net/rsstik-direct.xml:COOKIE:xuid=20020228;xpass=tungcheeh
 ### ruTorrent RSS-Url-Rewrite
 
 配置完 Cookies 后你会发现有些站点已经可以下载了（比如 RacingForMe，Cinematik），有些站点还是无法下载，这是因为报道上出现了偏差，这时候就需要 `rssurlrewrite` 了  
-首先，随便选中一个 RSS 到的项目，右键——规则管理：
+先找到这个设置：
 
 ![ruTorrent-urlrewrite-1.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-1.png)  
 
 按照我图中的设置操作：
 
-![ruTorrent-urlrewrite-3.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-3.png)  
-![ruTorrent-urlrewrite-2.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-2.png)  
+![ruTorrent-urlrewrite-3.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-2.png)  
+![ruTorrent-urlrewrite-2.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-3.png)  
 
 ```
 |http://cinemageddon.net/details.php?id=(\d+)|i
-http://cinemageddon.net/download.php?id=/${1}&name=${1}.torrent
+http://cinemageddon.net/download.php?id=${1}&name=${1}.torrent
 
 |http://asiandvdclub.org/details.php\?id=(\d+)|i
 http://asiandvdclub.org/download.php?id=${1}
@@ -248,7 +261,7 @@ http://asiandvdclub.org/download.php?id=${1}
 
 在规则调试的测试中输入 RSS 源中的 URL，按下 `?` 按钮测试规则是否能正常执行  
 
-至于其他站点的规则要怎么写，读者们自己举一反三吧  
+至于其他站点的规则要怎么写，应该没什么难度了，读者们自己举一反三吧  
 
 ### temp end
 
@@ -267,7 +280,8 @@ http://asiandvdclub.org/download.php?id=${1}
 4. qBittorrent RSS 入门级教程（不用教也会系列）  
 5. Deluge YaRSS2 RSS 入门级教程  
 6. Flood RSS 入门级教程  
-
+7. AutoDL-Irssi 入门级教程（不包含站点配置）  
+8. Flexget IRC 入门级教程  
 
 
 
