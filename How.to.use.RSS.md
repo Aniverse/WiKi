@@ -252,7 +252,7 @@ https://www.cinematik.net/rsstik-direct.xml:COOKIE:xuid=20020228;xpass=tungcheeh
 ![ruTorrent-urlrewrite-2.png](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-urlrewrite-3.png)  
 
 ```
-|http://cinemageddon.net/details.php?id=(\d+)|i
+|http://cinemageddon.net/details.php\?id=(\d+)|i
 http://cinemageddon.net/download.php?id=${1}&name=${1}.torrent
 
 |http://asiandvdclub.org/details.php\?id=(\d+)|i
