@@ -226,12 +226,16 @@ ruTorrent 通用的 Cookies 在设置里：
 
 ```
 asiandvdclub.org|uid=654321;pass=2young2simple;
-cinematik.net|xuid=12345;xpass=s0met1mesna1ve;
+cinemageddon.net|uid=998998;pass=12345678abcdefg;
+www.cinematik.net|xuid=12345;xpass=s0met1mesna1ve;
+www.racingfor.me|uid=54321;idh=rfmc;
+www.iloveclassics.com|c_secure_uid=1%2;c_secure_pass=bb7;c_secure_login=bm;PHPSESSID=bc;
 ```
-然后你加种时直接用类似 `https://asiandvdclub.org/download.php?id=117677` 的链接就能直接添加到 rTorrent 上了  
 
-不过似乎这个 Cookies 对 RSS 无效，对于需要 Cookies 的 RSS 源，你应该这么填写 Cookies：  
+然后你加种时直接用形如 `https://asiandvdclub.org/download.php?id=117677` 的链接就能直接添加到 rTorrent 上了  
+**注意**：`cinematik.net` 和 `www.cinematik.net` 会被当成两个站点来对待，因此对于 `https://www.cinematik.net/download.php?id=74197` 这样子的链接，你需要写的 Cookies 格式应该是 www 开头的  
 
+你也可以选择只在 RSS 里使用 Cookies：
 ![ruTorrent-RSS-Cookies-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-RSS-Cookies-2.png)  
 
 ```
