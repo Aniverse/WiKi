@@ -45,21 +45,23 @@
 ![CG-1](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-1.png)
 
 右键复制这个 <u>/rss.xml</u> 的链接地址，即为该站点的 RSS 链接。  
+
 Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`  
+
 打开这个链接，可以看到如下界面：
 
 ![CG-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-2.png)
 
 第一个种子的链接是：`http://cinemageddon.net/details.php?id=217348`  
+
 显然，这不是种子的下载链接（下载链接一般都是 download.php 之类的，或者什么 linktype=dl，总之一般都和下载这个词有关系）。打开页面后也可以看到，这其实是种子的浏览页面：  
 
 ![CG-3](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-CG-3.png)
 
 右键复制种子的下载链接，得到这个链接：`http://cinemageddon.net/download.php?id=217348&name=A.Revolucao.de.Maio.1937.720p.WEBRip.x264-MaZ.mkv.torrent`  
+
 观察这个种子下载链接和之前的种子页面链接，其实主要区别就在于 `details.php` 和 `download.php` 上  
-把后面的 `name=A.Revolucao.de.Maio.1937.720p.WEBRip.x264-MaZ.mkv.torrent` 替换成 `name=123.torrent`，你下来的文件本身还是一样的，就是文件名不同罢了  
-如果你直接用 `http://cinemageddon.net/download.php?id=217348` 下载，会得到 `download.php` 这个文件，但其实这也是一个种子文件，就是后缀名不对罢了  
-因此，后边的 `name=XXX` 这一串其实意义不大，我们要做的就是把 `details` 这个词替换成 `download`，这一操作要如何完成，在之后讲解  
+把后面的 `name=A.Revolucao.de.Maio.1937.720p.WEBRip.x264-MaZ.mkv.torrent` 替换成 `name=123.torrent`，你下来的文件本身还是一样的，就是文件名不同。如果你直接用 `http://cinemageddon.net/download.php?id=217348` 下载，会得到 `download.php` 这个文件，但其实这也是一个种子文件，就是后缀名不对罢了。因此，后边的 `name=XXX` 这一串其实意义不大，我们要做的就是把 `details` 这个词替换成 `download`，这一操作要如何完成，在之后讲解  
 
 再来几个其他站点寻找 RSS 源的例子：
 
@@ -73,7 +75,7 @@ Cinemageddon 的 RSS 链接便是：`http://cinemageddon.net/rss.xml`
 
 **注意**：本教程使用 Chrome 浏览器来讲解，其他浏览器用户请自行搜索获取 Cookies 的办法  
 
-由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassic），无法直接在盒子上下载种子，因此需要使用 Cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）  
+由于某些站点提供的 RSS 里的链接不带 passkey 之类的信息（比如 AsianDVDClub、CinemaGeddon、Cinematik、ILoveClassics），无法直接在盒子上下载种子，因此需要使用 Cookies（ [什么是 Cookies？](https://baike.baidu.com/item/cookie/1119)）  
 
 获取 Cookies 的办法有很多种，比如可以用 [EditThisCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg) 插件导出，或者按照下图操作：
 
@@ -153,7 +155,7 @@ tasks:
 简单地讲解下：
 
 **[headers](https://flexget.com/Plugins/headers)**：这个插件可以修改 request headers（请求头）。刚才在获取 Cookies 那一章里提到过这个东西，这个插件改的就是这个。一般让 headers 里带上 cookies 就行（有些情况下可能需要修改 User-Agent）  
-PS：也可以用 Flexget 的 [Cookies](https://flexget.com/Plugins/cookies) 来搞定 cookies，不过我觉得还是用 headers 更方便  
+PS：也可以用 [Cookies](https://flexget.com/Plugins/cookies) 插件来搞定 cookies，不过我觉得还是用 headers 更方便  
 
 另外实测 `__cfduid` 和 `PHPSESSID` 之类的其实不写也没事，不过既然都复制下来了，写上去也无妨……
 
@@ -233,7 +235,8 @@ www.iloveclassics.com|c_secure_uid=1%2;c_secure_pass=bb7;c_secure_login=bm;PHPSE
 ```
 
 然后你加种时直接用形如 `https://asiandvdclub.org/download.php?id=117677` 的链接就能直接添加到 rTorrent 上了  
-**注意**：`cinematik.net` 和 `www.cinematik.net` 会被当成两个站点来对待，因此对于 `https://www.cinematik.net/download.php?id=74197` 这样子的链接，你需要写的 Cookies 格式应该是 www 开头的  
+
+**注意**：`cinematik.net` 和 `www.cinematik.net` 会被当成两个站点来对待，因此对于 `https://www.cinematik.net/download.php?id=74197` 这样子的链接，你需要写的 Cookies 格式应该是 `www` 开头的  
 
 你也可以选择只在 RSS 里使用 Cookies：
 ![ruTorrent-RSS-Cookies-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/ruTorrent-RSS-Cookies-2.png)  
