@@ -10,23 +10,57 @@
 ## 注意事项
 1. 在某些站点，使用 RSS 脚本可能需要备案  
 注意：备案时是备案使用盒子 IP 的代理，而不是备案要使用 RSS 脚本  
-2. 不建议把 RSS 的频率设定得太高  
-太高的频率可能会被站点认为是在做太高的频率可能会被站点认为是在做 DDoS 或者恶意使用脚本。至于多少时间执行一次 RSS 算频率高，这个是站点管理说了算的，不同的管理看法不同。我个人不建议把 RSS 间隔设定在 5 分钟以内，因为在站点既不提供 RSS 又没有 AutoDL-Irssi 支持的站，或者在 RSS 约等于没有的站（比如 ADC、Cinematik），没有多少人会 RSS，稍微晚上车几分钟影响不是很大。  
+2. 不建议把 RSS 的频率设定得过高  
+太高的频率可能会被站点认为是在做太高的频率可能会被站点认为是在做 DDoS 或者恶意使用脚本。至于多少时间执行一次 RSS 算频率高，这个是站点管理说了算的，不同的管理看法不同。我个人不建议把 RSS 间隔设定在 5 分钟以内，因为在站点既不提供 RSS 又没有 AutoDL-Irssi 支持的站，或者在 RSS 约等于没有的站（比如 ADC、Cinematik），没有多少人会 RSS，稍微晚上车几分钟影响一般不是很大  
 3. 注意正确填写 Cookies  
-用不正确的 Cookies 访问站点导致没登录上去，也就等于登陆失败，次数多了可能导致你盒子的 IP 被 ban。  
+用不正确的 Cookies 访问站点导致没登录上去，也就等于登陆失败，次数多了可能导致你盒子的 IP 被 ban  
 
 
 ## 脚本参数
 
-脚本需要修改的设置项一般就几个：
-- `Cookie` 站点的 Cookies，如何获取下文有说明  
+脚本需要修改的设置项一般就以下几个：
+
+- `Cookie` 站点的 Cookies，如何获取、填写请看[这篇教程](https://github.com/Aniverse/WiKi/blob/master/How.to.use.RSS.md#2-获取-cookies)  
+```
+Cookie="lognnI=XXXXXXXXX ;loggnA=XXXXXXXXX ; loggnB=XXXXXXXXX ; navpreferences=XXXXXXXXX"
+```
+
 - `WatchFolder` BT 客户端的监控文件夹的路径，脚本会把种子下载到这个路径  
+我这个路径只是给你举个例子，你实际上的监控文件夹路径不一定是这个（尤其是共享盒子），具体路径在哪里自己找
+```
+WatchFolder="/home/用户名/下载软件/监控文件夹"
+```
+
 - `LogFile` 脚本运行的日志文件，记录脚本曾经 RSS 到过哪些种子  
-- `RSSType` 脚本的 RSS 模式，不同的脚本有不同的模式可供选择  
+脚本里默认用的是有 root 权限才有权限访问的路径，如果你不用 root 运行脚本，请修改这个路径，否则脚本无法运行！  
+```
+LogFile="/log/HDSpain_record.txt"
+```
+
+- `RSSType` 脚本的 RSS 模式，不同的脚本有不同的模式可供选择，也有的脚本只提供了一种模式因此没得选  
+```
+RSSType=B
+```
+
 还有两项一般不需要修改的参数：
-- `UA` UserAgent。脚本是模拟成 UA 对应的浏览器去访问 PT 站的，如果不懂的话就不要改这个  
+
+- `UA` UserAgent。脚本是模拟成 UA 对应的浏览器去访问 PT 站的，如果不懂的话就不要改这个项目  
+```
+UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
+```
+
 - `URL` 脚本 RSS 的站点种子浏览页面的网址。 大多数情况下不需要修改  
 比如在 Route，我的脚本给的 URL 是 `browse.php?s=&action=s`，也就是默认的种子浏览页面去除置顶种子的页面，脚本是抓取这个网页里的全部种子。如果你只想 RSS 蓝光原盘，你把 URL 改成 `browse.php?s=&action=s&c1=1&m1=1` 即可  
+```
+URL="https://www.hd-spain.com/index.php?sec=listado"
+```
+
+
+
+
+
+
+
 
 
 ## 如何使用
@@ -34,13 +68,14 @@
 ### 1. 填写好脚本各项的参数
 
 ### 2. 把脚本上传到盒子上  
-
+可以用 FTP/SFTP/ZMODEM 等方式上传到盒子上，但其实也可以直接把脚本文本复制粘贴到盒子上
 
 ### 3. 赋予脚本执行权限
+```
+chmod +x /脚本/路径/脚本文件名
+```
 
-
-
-
+### 4. 设定定期运行
 
 
 
