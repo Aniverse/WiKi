@@ -167,8 +167,8 @@ PS：也可以用 [Cookies](https://flexget.com/Plugins/cookies) 插件来搞定
 
 【1】CinemaGeddon 的 RSS 下载链接其实是要替换的，为什么没配置 urlrewrite？  
 
-这是因为，Flexget 自带的 **[URL Rewriters](https://flexget.com/URLRewriters)** 模板中已经包含了 CinemaGeddon 的下载链接替换模板，都不需要我自己来写了。  
-另外值得注意的是，CinemaGeddon 自带的 RSS 的文字编码有问题，会导致 Flexget 下载带特殊字符的种子时出错，因此需要启用 `ascii: yes`  
+这是因为，Flexget 自带的 **[URL Rewriters](https://flexget.com/URLRewriters)** 已经包含了 CinemaGeddon 的下载链接替换模板，都不需要我自己来写了。  
+此外，CinemaGeddon RSS 的文字编码有问题，会导致 Flexget 下载带特殊字符的种子时出错，因此需要启用 `ascii: yes`  
 
 如果你不想要自带的 url_rewirte 模板的话，可以这么写：  
 
@@ -189,7 +189,7 @@ tasks:
     download: /home/aniverse/deluge/watch
 ```
 
-当然你没必要这么做，我这里这么示范给你看主要是考虑到万一自带的 URLRewriters 报道上出现了偏差的话，如何自己挽救……  
+当然你没必要这么做，我这么示范给你看主要是考虑到万一自带的 URLRewriters 模板出了问题的话如何自己挽救……  
 
 【2】Cinematik 的 RSS 链接里带了 key，为什么还需要 Cookies？  
 
@@ -197,12 +197,15 @@ Tik 真的是蛋疼，查看源码后你会看到它有三种 RSS 链接
 
 ![TIK-1](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-1.png)  
 
-我第一反应就是，这个 `direct download` 应该就是可以直接下载且带 passkey 的（链接里都写着 key 了）——但实际上并不是。打开链接后打开这个 RSS 链接后你会发现，这个 RSS 源确实给了你下载链接，不需要你 rewrite url 了，但是下载链接不带 passkey，你还是需要配置 cookies  
+我第一反应就是，这个 `direct download` 应该就是可以直接下载且带 passkey 的（链接里都写着 key 了）——  
+但实际上并不是。打开链接后打开这个 RSS 链接后你会发现，这个 RSS 源确实直接给了你下载链接，不需要你 rewrite url 了，但是下载链接不带 passkey，你还是需要配置 cookies  
 
 ![TIK-2](https://github.com/Aniverse/WiKi/raw/master/Images/RSS/How.to.RSS-TIK-2.png)  
 
 此外这个 RSS 源里还有一个不带 key 的 direct download RSS 链接，效果和带 key 的是一样的：  
+
 `https://www.cinematik.net/rsstik-direct.xml`  
+
 然而这个链接你在 Tik 种子页面的源码里是找不到的……  
 
 
