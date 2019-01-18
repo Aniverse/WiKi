@@ -132,7 +132,9 @@ tasks:
     accept_all: yes
     download: /home/aniverse/deluge/watch
   CinemaGeddon:
-    rss: http://cinemageddon.net/rss.xml
+    rss:
+      url: http://cinemageddon.net/rss.xml
+      ascii: yes
     headers:
       Cookie: "__cfduid=abcd123456789; uid=12450; pass=123sometimesnaive"
     accept_all: yes
@@ -166,8 +168,28 @@ PS：也可以用 [Cookies](https://flexget.com/Plugins/cookies) 插件来搞定
 【1】CinemaGeddon 的 RSS 下载链接其实是要替换的，为什么没配置 urlrewrite？  
 
 这是因为，Flexget 自带的 **[URL Rewriters](https://flexget.com/URLRewriters)** 模板中已经包含了 CinemaGeddon 的下载链接替换模板，都不需要我自己来写了。  
-但是也有个蛋疼的问题，Flexget 对于特殊字符的 urlrewrite 存在问题，导致下载形如 `Los Días Calientes [Argentina] [1966/WEB-DL/x264] (Comedy)` 的种子的时候会失败，这种时候如果能不用自带的模板下载种子的话反而能避开这个问题  
-这个问题我暂时还没研究如何解决，要么去给官方反应问题等待官方修复，要么自己把这个插件禁用掉（我也还没试过怎么禁用）  
+另外值得注意的是，CinemaGeddon 自带的 RSS 的文字编码有问题，会导致 Flexget 下载带特殊字符的种子时出错，因此需要启用 `ascii: yes`  
+
+如果你不想要自带的 url_rewirte 模板的话，可以这么写：  
+
+```YAML
+tasks:
+  CinemaGeddon:
+    rss:
+      url: http://cinemageddon.net/rss.xml
+      ascii: yes
+    headers:
+      Cookie: "__cfduid=abcd123456789; uid=12450; pass=123sometimesnaive"
+    disable_urlrewriters: [cinemageddon]
+    urlrewrite:
+      sitename:
+        regexp: 'http://cinemageddon.net/details.php\?id=(?P<id>\d+)'
+        format: 'http://cinemageddon.net/download.php?id=\g<id>&name=\g<id>.torrent'
+    accept_all: yes
+    download: /home/aniverse/deluge/watch
+```
+
+当然你没必要这么做，我这里这么示范给你看主要是考虑到万一自带的 URLRewriters 报道上出现了偏差的话，如何自己挽救……  
 
 【2】Cinematik 的 RSS 链接里带了 key，为什么还需要 Cookies？  
 
