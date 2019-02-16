@@ -229,13 +229,15 @@ ruTorrent 不仅支持正则，还支持 url_rewrite 和 cookies，也足够满�
 [QuickBox](https://github.com/QuickBox/QB) 脚本  
 `/srv/rutorrent/plugins/rss/conf.php`  
 Feral Hosting  
-`~/www/你的用户名.机器名/public_html/rutorrent/plugins/rss/conf.php`  
+`~/www/用户名.机器名/public_html/rutorrent/plugins/rss/conf.php`  
+SeedHost  
+`/home/用户名.机器名.seedhost.eu/用户名/rutorrent/plugins/rss/conf.php`  
 Pulsed Media  
 `~/www/rutorrent/plugins/rss/conf.php`  
 Seedboxes.cc（这家直接帮你改成 1 分钟了，都用不着你自己改）  
 `/home/user/.www/rutorrent/plugins/rss/conf.php`  
 
-至于 SeedHost／UltraSeedBox 等盒子，我现在没机器没法找，反正也在 www 目录下，不难找；其他脚本装的也同理  
+至于 UltraSeedBox／AppBox 等盒子，我现在没机器没法找，反正也在 www 目录下，不难找；其他脚本装的也同理  
 
 文件找到以后，用这行命令修改  
 `sed -i "s/\$minInterval = .*\;/\$minInterval = 1\;/" conf.php_的路径`  
