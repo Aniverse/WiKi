@@ -231,7 +231,7 @@ ruTorrent 不仅支持正则，还支持 url_rewrite 和 cookies，也足够满�
 Feral Hosting  
 `~/www/用户名.机器名/public_html/rutorrent/plugins/rss/conf.php`  
 SeedHost  
-`/home/用户名.机器名.seedhost.eu/用户名/rutorrent/plugins/rss/conf.php`  
+`~/www/用户名.机器名.seedhost.eu/用户名/rutorrent/plugins/rss/conf.php`  
 Pulsed Media  
 `~/www/rutorrent/plugins/rss/conf.php`  
 Seedboxes.cc（这家直接帮你改成 1 分钟了，都用不着你自己改）  
