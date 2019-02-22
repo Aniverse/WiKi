@@ -58,55 +58,68 @@ templates:
 
 # 任务
 tasks:
-
-# HDChina 是任务名称，不一定要和网站名称一样
-  HDChina:
-# RSS 地址请自己修改成你需要的地址
-    rss: https://hdchina.org/torrentrss.php
-# 关闭对于 ssl 的验证
-    verify_ssl_certificates: no
-# 如果种子标题中有 HDChina 或 HDCTV，那就执行下载
-    if:
-      - "'HDChina' in title and '1080p' in title": accept
-      - "'HDCTV' in title": accept
-# HDChina 这个 RSS 任务所调用的模板，这里用了剩余空间、体积过滤、qb下载 这三个模板
-# 实现的效果即为：使用 qb 下载，只下载体积介于 6000MB-666666MB 的种子，剩余空间小于 10GB 时候停止 RSS
-    template:
-      - freespace
-      - size
-      - qb
-# 添加到 qbittorrent 的时候，自动对 RSS 到的种子添加 HDChina 的标签
-    qbittorrent:
-      label: HDChina
-
-  MTeam:
-    rss: https://tp.m-team.cc/torrentrss.php
-    verify_ssl_certificates: no
-# 正则表达式；标题带 OneHD 的种子就下载（accept，接受），带 MTeamPAD 的就不下载（reject，拒绝）
+# Web-HDSky 是任务名称，基本上随便起
+  Web-HDSky:
+  # RSS 链接请自己修改成你实际的链接
+    rss: https://hdsky.me/torrentrss.php
+    # 因为 HDSWEB 发单集的时候用的标题是一样的， 因此下过一次后
+    # 之后新发出来的单集由于标题一样，flexget 会当成是以前已经下过的种子
+    # 为了避免这个问题，对 seen 插件设定为只检查 url 是否一致
+    seen:
+      fields:
+        - url
+  # 正则表达式；标题带 HDSWEB 的种子就下载（accept，接受），不想下载的话就写拒绝（reject）
     regexp:
       accept:
-        - OneHD
-      reject:
-        - MTeamPAD
-    template:
-      - de
-# 可以不使用模板的体积过滤，针对每个任务单独设置体积过滤
+        - HDSWEB
+  # 调用上边的 de 模板
+    template: de
+  # 可以不使用模板的体积过滤，针对每个任务单独设置体积过滤
     content_size:
-      min: 15000
-      max: 100000
+      min: 3000
+      max: 500000
       strict: no
-# 添加到 deluge 的时候，自动对 RSS 到的种子设置 12800KB/s 的上传速度限制
+  # 以下设定实现的效果：对这个任务加载到 deluge 的种子，自动添加 WEB-DL 的标签
+  # 自动限制上传速度到 100MB/s（防止超速 ban），下完后自动移动到 /mnt/HDSky/HDSWEB
     deluge:
-      maxupspeed: 12800.0
+      label: WEB-DL
+      # Limit upload speed to 100 MiB/s in case of being auto-banned
+      max_up_speed: 102400
+      move_completed_path: /mnt/HDSky/HDSWEB
+  ADC-AnimeBD-JPN:
+    rss: http://asiandvdclub.org/rss.xml
+    if:
+      - "'Anime' and 'AVC' in title": accept
+      - "'subs only' in title": reject
+      - "'Custom' in description": reject
+      # 这三个过滤条件组合起来就是，下载标题里带 Anime 和 AVC 且不含 subs only 的种子
+      # 并排除掉 描述页 里含有 Custom 字眼的种子
+      # 这也就约等于，RSS 日版动画蓝光碟（非日版、DIY 碟、DVD 都过滤掉）
+    # RSS ADC 需要 Cookies，这里我们用 headers 插件来加上 cookies
+    # 如何获取 Cookies 请看另外一篇教程
+    headers:
+      Cookie: "uid=12345; pass=abcdefg"
+    # 转换 RSS 链接，将原本形如 http://asiandvdclub.org/details.php?id=123456 的种子描述页面链接
+    # 替换为形如 http://asiandvdclub.org/download.php?id=123456 的种子下载链接
+    urlrewrite:
+      sitename:
+        regexp: 'http://asiandvdclub.org/details.php\?id=(?P<id>\d+)'
+        format: 'http://asiandvdclub.org/download.php?id=\g<id>'
+    qbittorrent:
+      label: ADC
+      # 刷 ADC 不用限速，我这里写这个限速模板只是想告诉你
+      # Flexget 支持添加种子到 qBittorrent 的时候自动设定单种限速
+      maxdownspeed: 30000
 
 # Flexget WebUI 设定，可以不改
-# base_url 是为了反代设置的，需要使用反代的话就取消这个的注释，然后在安装了 rTorrent 的情况下（不装 rt 的话没有 nginx），Flexget WebUI 地址就变成了 https://你盒子的 IP 地址/flexget
 web_server:
   port: 6566
   web_ui: yes
 # base_url: /flexget
+# base_url 是为了反代设置的，需要使用反代的话就取消这个的注释，然后在安装了 rTorrent 的情况下（不装 rt 的话没有 nginx）
+# Flexget WebUI 地址就变成了 https://你盒子的 IP 地址/flexget
 
-# 这里关闭 RSS 功能，如何打开请看下文
+# 这里关闭 schedules 功能，也就是说没有启用 RSS，如何启用请看下文
 schedules: no
 ```
 
@@ -136,7 +149,7 @@ flexget execute --learn
 
 
 
-## 开启 RSS 功能
+## 开启 RSS
 
 ### 方法 1 ：使用 schedules
 
