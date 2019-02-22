@@ -118,7 +118,7 @@ tasks:
   AsianDVDClub:
     rss: http://asiandvdclub.org/rss.xml
     headers:
-      Cookie:"uid=12345; pass=shang3dalaohu"
+      Cookie: "uid=12345; pass=shang3dalaohu"
     urlrewrite:
       sitename:
         regexp: 'http://asiandvdclub.org/details.php\?id=(?P<id>\d+)'
