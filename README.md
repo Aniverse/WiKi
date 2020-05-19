@@ -56,3 +56,28 @@
 [QuickBox-arm](https://github.com/amefs/quickbox-arm)  
 [swizzin](https://swizzin.ltd)  
 [PGBlitz (AKA PlexGuide)](https://plexguide.com/forums/)  
+
+### Hetzner 独服一键安装系统（RAID0）
+
+注意：这个办法只适用于有多个硬盘且每个硬盘大小相同的 Hetzner 独立服务器。比如 2 块 3TB HDD，4 块 4TB HDD，2 块 NVMe SSD 等都可以用这个命令。但是对于 SSD+HDD 或者 1T SSD+2T SSD 这种特殊情况请不要使用这个命令，会造成空间的浪费
+在 hz 的控制面板里开启 rescue（救援模式），reset 里重启服务器，之后 SSH 连接服务器，直接输入下面的一行命令就可以了  
+相比其他教程，这个命令的优点在于完全不需要任何交互操作，不需要修改分区、选择系统等等，复制——粘贴——敲回车就搞定了  
+
+```
+# 安装 Debian 8（不推荐，系统太老了）
+time echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Debian-811-jessie-64-minimal.tar.gz  -n Hz -a && reboot
+
+# 安装 Debian 9
+time echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Debian-911-stretch-64-minimal.tar.gz -n Hz -a && reboot
+
+# 安装 Debian 10
+time echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Debian-103-buster-64-minimal.tar.gz  -n Hz -a && reboot
+
+# 安装 Ubuntu 16.04
+time echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Ubuntu-1604-xenial-64-minimal.tar.gz -n Hz -a && reboot
+
+# 安装 Ubuntu 18.04
+time echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Ubuntu-1804-bionic-64-minimal.tar.gz -n Hz -a && reboot
+```
+
+
