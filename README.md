@@ -1,26 +1,26 @@
 ### 我个人的一些脚本
 
-[inexistence 盒子部署一键脚本](https://github.com/Aniverse/inexistence)  
+- [inexistence 盒子部署一键脚本](https://github.com/Aniverse/inexistence)  
 可以在有 root 权限、运行主流 LTS 版本的 Debian/Ubuntu 服务器上，安装 qb/tr/rt/de 客户端  
-[AccTCP 网络优化脚本](https://github.com/Aniverse/TrCtrlProToc0l)  
+- [AccTCP 网络优化脚本](https://github.com/Aniverse/TrCtrlProToc0l)  
 说白了就是安装 bbr／魔改 bbr／bbrplus／锐速的多合一脚本  
-[iFeral 共享盒子专用脚本](https://github.com/Aniverse/iFeral)  
+- [iFeral 共享盒子专用脚本](https://github.com/Aniverse/iFeral)  
 我目前没啥精力维护这个脚本，很多功能有问题……  
-[bluray 转发原盘专用脚本](https://github.com/Aniverse/bluray)  
+- [bluray 转发原盘专用脚本](https://github.com/Aniverse/bluray)  
 可以对 BDMV/BDISO 扫 bdinfo、截图、制作种子的一键脚本  
-[Abench](https://github.com/Aniverse/A)  
+- [Abench](https://github.com/Aniverse/A)  
 服务器测试脚本，主要优势在于可以检测独服的硬盘通电时间，使用 fio 测试 SSD 性能  
-[aBox](https://github.com/Aniverse/aBox)  
+- [aBox](https://github.com/Aniverse/aBox)  
 各种脚本杂烩，包含了一键配置 IPv6 脚本、iperf 测速脚本、更换 r8168 驱动脚本等  
-[qbittorrent-nox-static](https://github.com/Aniverse/qbittorrent-nox-static)  
+- [qbittorrent-nox-static](https://github.com/Aniverse/qbittorrent-nox-static)  
 在几十秒内安装好静态编辑的 qbittorrent-nox 并进行配置，适配 CentOS／Fedora／Debian／Ubuntu／ArchLinux／OpenSUSE  
 
 ### 云文档
 
 [PT 限盒／限 IP／HR 情况统计表](https://kdocs.cn/l/sEi6Sg5iu)  
-[个人选出的高性价比 seedbox 统计](https://kdocs.cn/l/sNHCWHL2J)  
+[个人评出的高性价比 seedbox 统计](https://kdocs.cn/l/sNHCWHL2J)  
 
-### Discord channels for seedbox
+### Discord channels for seedbox/trackers
 
 [swizzin](https://discord.gg/bDFqAUF)  
 [QuickBox](https://discordapp.com/invite/hCCbVhu)  
@@ -59,7 +59,7 @@
 
 ### Hetzner 独服一键安装系统（RAID0）
 
-注意：这个办法只适用于有多个硬盘且每个硬盘大小相同的 Hetzner 独立服务器。比如 2 块 3TB HDD，4 块 4TB HDD，2 块 NVMe SSD 等都可以用这个命令。但是对于 SSD+HDD 或者 1T SSD+2T SSD 这种特殊情况请不要使用这个命令，会造成空间的浪费
+注意：这个办法只适用于有多个硬盘且每个硬盘大小相同的 Hetzner 独立服务器。比如 2 块 3TB HDD，4 块 4TB HDD，2 块 NVMe SSD 等都可以用这个命令。但是对于 SSD+HDD 或者 1T SSD+2T SSD 这种特殊情况请不要使用这个命令，会造成空间的浪费  
 在 hz 的控制面板里开启 rescue（救援模式），reset 里重启服务器，之后 SSH 连接服务器，直接输入下面的一行命令就可以了  
 相比其他教程，这个命令的优点在于完全不需要任何交互操作，不需要修改分区、选择系统等等，复制——粘贴——敲回车就搞定了  
 
