@@ -9,6 +9,8 @@
 - OurBits 工单系统：https://ticket.ourbits.club/?m=Category&a=index  
 - SSD 查询用户：https://springsunday.net/users.php  
 
+---
+
 - Online 独服下单地址：https://console.online.net/en/order/server  
 - Online 独服参数信息：https://documentation.online.net/en/dedicated-server/offers/start  
 - Online 独服新旧型号对照表：https://documentation.online.net/en/dedicated-server/offers/overview  
@@ -19,11 +21,16 @@
 - Heztner 加硬件价格表：https://wiki.hetzner.de/index.php/Root_Server_Hardware/en  
 - OVH/SYS/KS 监控：https://checkservers.ovh  
 
+---
+
 - PayPal 预核准付款：https://www.paypal.com/myaccount/autopay  
+
 
 ```
 https://greasyfork.org/zh-CN/users/683-differentia  
 https://greasyfork.org/zh-CN/users/284654-ylxb2016  
 https://greasyfork.org/zh-CN/scripts/21233-hdbits-browse-torrents-plus  
-https://greasyfork.org/zh-CN/scripts/329484 
+https://greasyfork.org/zh-CN/scripts/329484  
+
+https://github.com/qbittorrent/qBittorrent/pulls?q=label%3AWebUI+  
 ```
