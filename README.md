@@ -23,8 +23,9 @@
 ### 常见独服／盒子购买网址
 
 - [OneProvider](https://oneprovider.com/dedicated-servers/paris-france)  
-简称 op。作为盒子使用时一般买的都是 OP 法国巴黎的机器，巴黎的机器基本都是转卖的 Online 的机器  
-廉价机器基本都是过时硬件，硬盘通电时间 3-7W 都是常有的事情，这价格也不能要求太多。  
+简称 op。作为盒子使用时一般买的都是 OP 法国巴黎的机器，巴黎的机器基本都是转卖的 Scaleway 的机器  
+廉价机器基本都是过时硬件，硬盘通电时间 3-7 万小时都是常有的事情，这价格也不能要求太多。  
+他家还有其他地区的机器，但刷流而言性价比一般都不如巴黎的。比如荷兰阿姆斯特丹的部分机器也是 Scaleway 的机器，但一般价格比巴黎更贵；加拿大蒙特利尔的机器是 OVH 的，不要买，实际上行带宽只有 250Mbps  
 - [Online（现 Scaleway）](https://www.scaleway.com/en/dedibox/pricing)  
 简称 ol 或 scw，以前叫 Online.net，现在应称之为 Scaleway Dedibox  
 这家现在非特价机性价比不行，要么等促销的时候买特价机，要么就去 OP 那边买 SCW 淘汰下来的机器  
@@ -43,7 +44,8 @@ OVH 比较贵，国内买来刷流的不多，且带宽很多也没有 1Gbps
 简称 ik。刷国内站的话连接性还算不错，不过 1Gbps 并不是真的无限制，容易被限速  
 - [WalkerServers](https://clients.walkerservers.com/aff.php?aff=38) （***本链接含 aff***，[不含 aff 的点此](https://clients.walkerservers.com)）  
 简称 WS，销售 Hz/LW/NF 的独服，包优化和技术支持，配置对得起价格，在同类里性价比算很好的了  
-什么是 aff？简单来说，你点了这个含 aff 的链接下单购买的话，我有一定的返利。对你没什么坏处，你付的钱还是一样，得到的东西还是一样的，但对我有好处。如果你不愿意走 aff 的话就点这个不含 aff 的链接下单  
+什么是 aff？简单来说，你点了这个含 aff 的链接下单购买的话，我有一定的返利。对你没什么坏处，你付的钱还是一样，得到的东西还是一样的，但对我有好处。如果你不愿意走 aff 的话就点不含 aff 的链接下单  
+
 
 - [Andy10gbit](https://www.reddit.com/user/Andy10gbit)  
 这就是传说中的 andy，没官网。包优化和技术支持，价格不如 WS  
@@ -63,16 +65,17 @@ OVH 比较贵，国内买来刷流的不多，且带宽很多也没有 1Gbps
 独服卖的是 LW/NF 的，但性价比不如 WS 和 SH  
 - [seedboxes.cc](https://seedboxes.cc/)  
 我个人把它简称为 sbcc，似乎需要梯子才能访问。为数不多的 10/20Gbps 无限流量共享盒子  
-- [PulsedMedia](http://pulsedmedia.com/clients/aff.php?aff=1230)（***本链接含 aff***[不含 aff 的点此](https://pulsedmedia.com)）  
+- [PulsedMedia](http://pulsedmedia.com/clients/aff.php?aff=1230)（***本链接含 aff***，[不含 aff 的点此](https://pulsedmedia.com)）  
 简称 PM。虽然我给了 aff 链接，但说句真心话，我觉得这家挺垃圾的，刷流就算了，保种还算能用  
 这家的连接性非常差，客户端也仅提供了 rTorrent，价格也不美丽。但偶尔搞出的特价机的性价比还是挺不错的  
 
+
 - [LeaseWeb](https://www.leaseweb.com)  
 简称 LW。SH/WS/sbio/andy 的很多机器都来自这家。官网价格比 reseller 卖的价格贵得多，不要从官网购买  
-在国外刷子眼中，使用 LW 网络的盒子在刷流竞速中最强，不过由于限流且流量很贵，不推荐刷需要大流量的站（土豪可无视）  
+在国外刷子眼中，使用 LW 网络的盒子在刷流竞速中最强，不过由于限流且加流量很贵，不推荐刷需要大流量的站  
 - [NFOrce](https://www.nforce.com)  
 简称 NF。WS/sbio/andy 的很多机器都来自这家。官网价格比 reseller 卖的价格贵得多，不要从官网购买  
-NF 的网络质量也还算不错  
+NF 的网络质量也还算不错，虽然也限流，不过只计算上行流量，加流量价格也比 LW 便宜  
 
 ### Discord channels for seedbox/trackers
 
