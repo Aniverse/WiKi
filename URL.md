@@ -14,7 +14,7 @@
 - Online 独服下单地址：https://console.online.net/en/order/server  
 - Online 独服参数信息：https://documentation.online.net/en/dedicated-server/offers/start  
 - Online 独服新旧型号对照表：https://documentation.online.net/en/dedicated-server/offers/overview  
-- Scaleway 独服：https://www.scaleway.com/en/dedibox/pricing  
+- Scaleway 独服：https://www.scaleway.com/en/dedibox/pricing/?display=all  
 - OVH 独服：https://www.ovh.ie/dedicated_servers/prices  
 - Hetzner 独服：https://www.hetzner.com/dedicated-rootserver  
 - Hetzner 拍卖：https://www.hetzner.com/sb  
