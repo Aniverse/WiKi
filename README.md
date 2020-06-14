@@ -79,6 +79,22 @@ OVH/SYS/KS 是不同的网站，账号不通用，每个站需要单独注册，
 简称 NF。WS/sbio/andy 的很多机器都来自这家。官网价格比 reseller 卖的价格贵得多，不要从官网购买  
 NF 的网络质量也还算不错，虽然也限流，不过只计算上行流量，加流量价格也比 LW 便宜  
 
+### 其他 seedbox 脚本
+
+- [QuickBox](https://quickbox.io)  
+这个脚本的[社区版](https://github.com/QuickBox/QB)（CE，开源免费）现在基本不更新了，作者专注于维护专业版（Pro，不开源）  
+QuickBox Pro 可以算是最强盒子脚本了，然而每台机器 5 美元每月的价格，很多用户不会买账  
+事实上我觉得免费的 swizzin 或者 quickbox-lite、inexistence 也比较够用了，花钱买 QuickBox Pro 不是很有必要  
+- [QuickBox-lite](https://github.com/amefs/quickbox-lite)  
+efs 巨佬维护的 quickbox 脚本，dashboard 好用，更新、维护及时，推荐使用  
+- [QuickBox-arm](https://github.com/amefs/quickbox-arm)  
+efs 巨佬维护的 quickbox-lite 脚本的 arm 分支，专门用于 ARM 架构的设备（如树莓派）  
+- [swizzin](https://swizzin.ltd)  
+QuickBox CE 版停更后，swizzin 算是英文社区里最强的免费开源盒子脚本了，用户很多，口碑良好  
+支持多用户、支持网页面板上一键安装不少软件（但不支持安装 qBittorrent）  
+- [PGBlitz (AKA PlexGuide)](https://plexguide.com/forums/)  
+基于 Docker 部署软件的脚本，这个脚本更侧重于搭建媒体服务器，而不是构建 seedbox  
+
 ### Discord channels for seedbox/trackers
 
 [swizzin](https://discord.gg/bDFqAUF)  
@@ -89,25 +105,10 @@ NF 的网络质量也还算不错，虽然也限流，不过只计算上行流�
 [WalkerServers](https://discord.gg/wv67teS)  
 [cloudboxes.io](https://discordapp.com/invite/vHnKR68)  
 
-### 其他 seedbox 脚本
-
-- [QuickBox](https://quickbox.io)  
-这个脚本的社区版（CE，开源免费）现在基本不更新了，作者专注于维护专业版（Pro，不开源）  
-QuickBox Pro 可以算是最强盒子脚本了，然而每台机器 5 美元每月的价格，很多国内用户不会买账  
-事实上我觉得免费 swizzin 或者 quickbox-lite、inexis 也比较够用了，花钱买 QuickBox Pro 不是很有必要  
-- [QuickBox-lite](https://github.com/amefs/quickbox-lite)  
-efs 巨佬维护的 quickbox 脚本，dashboard 好用，更新、维护及时，推荐使用  
-- [QuickBox-arm](https://github.com/amefs/quickbox-arm)  
-efs 巨佬维护的 quickbox-lite 脚本的 arm 分支，专门用于 ARM 架构的设备（如树莓派）  
-- [swizzin](https://swizzin.ltd)  
-QuickBox CE 版停更后，swizzin 算是英文社区里最强的免费盒子脚本了，用户很多  
-支持多用户、支持网页面板上一键安装不少软件（但不支持安装 qBittorrent）  
-- [PGBlitz (AKA PlexGuide)](https://plexguide.com/forums/)  
-基于 Docker 部署软件的脚本，这个脚本更侧重于搭建媒体服务器，而不是构建 seedbox  
-
 ### Hetzner 独服一键安装系统（软 RAID0）
 
-注意：这个办法只适用于有多个硬盘且每个硬盘大小相同的 Hetzner 独立服务器。比如 2 块 3TB HDD，4 块 4TB HDD，2 块 NVMe SSD 等都可以用这个命令。但是对于 SSD+HDD 或者 1T SSD+2T SSD 这种特殊情况请不要使用这个命令，会造成空间的浪费  
+注意：这个办法只适用于有多个硬盘且每个硬盘大小相同的 Hetzner 独立服务器。
+  比如 2 块 3TB HDD，4 块 4TB HDD，2 块 NVMe SSD 等都可以用这个命令。但是对于 SSD+HDD 或者 1T SSD+2T SSD 这种特殊情况请不要使用这个命令，会造成空间的浪费  
 在 hz 的控制面板里开启 rescue（救援模式），reset 里重启服务器，之后 SSH 连接服务器，直接输入下面的一行命令就可以了  
 相比其他教程，这个命令的优点在于完全不需要任何交互操作，不需要修改分区、选择系统等等，复制——粘贴——敲回车就搞定了  
 
@@ -126,6 +127,9 @@ time echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Ubu
 
 # 安装 Ubuntu 18.04
 time echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Ubuntu-1804-bionic-64-minimal.tar.gz -n Hz -a && reboot
+
+# 安装 Ubuntu 20.04（inexistence 尚不支持该系统）
+time echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Ubuntu-2004-focal-64-minimal.tar.gz  -n Hz -a && reboot
 ```
 
 
