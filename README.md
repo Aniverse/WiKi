@@ -22,7 +22,7 @@
 
 ### 常见独服／盒子购买网址
 
-- [OneProvider](https://oneprovider.com/dedicated-servers/paris-france) 
+- [OneProvider](https://oneprovider.com/dedicated-servers/paris-france)  
 简称 op。作为盒子使用时一般买的都是 OP 法国巴黎的机器，巴黎的机器基本都是转卖的 Online 的机器  
 廉价机器基本都是过时硬件，硬盘通电时间 3-7W 都是常有的事情，这价格也不能要求太多。  
 - [Online（现 Scaleway）](https://www.scaleway.com/en/dedibox/pricing)  
@@ -43,11 +43,13 @@ OVH 比较贵，国内买来刷流的不多，且带宽很多也没有 1Gbps
 简称 ik。刷国内站的话连接性还算不错，不过 1Gbps 并不是真的无限制，容易被限速  
 - [WalkerServers](https://clients.walkerservers.com/aff.php?aff=38) （***本链接含 aff***，[不含 aff 的点此](https://clients.walkerservers.com)）  
 简称 WS，销售 Hz/LW/NF 的独服，包优化和技术支持，配置对得起价格，在同类里性价比算很好的了  
-什么是 aff？简单来说，你点了这个含 aff 的链接下单购买的话，我有一定的返利。对你没什么坏处，你付的钱还是一样，得到的东西还是一样，但对我有好处。如果你不愿意走 aff 的话就点这个不含 aff 的链接下单  
+什么是 aff？简单来说，你点了这个含 aff 的链接下单购买的话，我有一定的返利。对你没什么坏处，你付的钱还是一样，得到的东西还是一样的，但对我有好处。如果你不愿意走 aff 的话就点这个不含 aff 的链接下单  
 
 - [Andy10gbit](https://www.reddit.com/user/Andy10gbit)  
-这就是传说中的 andy，包优化和技术支持，回复和交付比较慢，价格不如 WS  
-不过他偶尔搞些促销性价比还不错，另外他卖的 OVH 是你能找到的最便宜的保证带宽 1Gbps 的 OVH 独服  
+这就是传说中的 andy，没官网。包优化和技术支持，价格不如 WS  
+一般推荐去 [discord](https://discord.gg/7Gv8tdM) 联系他，不过他回复的速度有时候能慢得令人发指  
+你付完钱，他说 24 小时内交付，结果拖了一个多星期才交付都见怪不怪了；有问题问他，可能回复也要等很久  
+他偶尔会搞些性价比还不错的促销。另外他卖的 OVH 是你能找到的最便宜的保证带宽 1Gbps 的 OVH 独服  
 - [FeralHosting](https://www.feralhosting.com/pricing)  
 简称 FH 或 Feral，以前国内很多人用，现在因为不少站禁止共享盒子，用的人不多了  
 真无限流量的 20Gbps 共享盒子，能刷多少看你造化以及你的邻居是否凶残  
@@ -63,6 +65,7 @@ OVH 比较贵，国内买来刷流的不多，且带宽很多也没有 1Gbps
 我个人把它简称为 sbcc，似乎需要梯子才能访问。为数不多的 10/20Gbps 无限流量共享盒子  
 - [PulsedMedia](http://pulsedmedia.com/clients/aff.php?aff=1230)（***本链接含 aff***[不含 aff 的点此](https://pulsedmedia.com)）  
 简称 PM。虽然我给了 aff 链接，但说句真心话，我觉得这家挺垃圾的，刷流就算了，保种还算能用  
+这家的连接性非常差，客户端也仅提供了 rTorrent，价格也不美丽。但偶尔搞出的特价机的性价比还是挺不错的  
 
 - [LeaseWeb](https://www.leaseweb.com)  
 简称 LW。SH/WS/sbio/andy 的很多机器都来自这家。官网价格比 reseller 卖的价格贵得多，不要从官网购买  
