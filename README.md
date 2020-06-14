@@ -24,28 +24,28 @@
 
 - [OneProvider](https://oneprovider.com/dedicated-servers/paris-france) 
 简称 op。作为盒子使用时一般买的都是 OP 法国巴黎的机器，巴黎的机器基本都是转卖的 Online 的机器  
-廉价机器基本都是古董硬件，硬盘通电时间 3-7W 都是常有的事情，这价格也不能要求太多。  
+廉价机器基本都是过时硬件，硬盘通电时间 3-7W 都是常有的事情，这价格也不能要求太多。  
 - [Online（现 Scaleway）](https://www.scaleway.com/en/dedibox/pricing)  
 简称 ol 或 scw，以前叫 Online.net，现在应称之为 Scaleway Dedibox  
-国内盒子中大约有一半或者更多使用 scw/op 的服务器  
-- [Hetzner](https://www.hetzner.com/sb) 简称 Hz  
-Hetzner 一般买的都是他家的拍卖机。像 i7 2600 的机器，你看 CPU 就能知道这机器服役很久了，硬盘一般都比较老  
-非拍卖机安装费比较贵  
+这家现在非特价机性价比不行，要么等促销的时候买特价机，要么就去 OP 那边买 SCW 淘汰下来的机器  
+国内盒子中大约有一半或者更多使用 scw/op 的服务器，市场占有率还是很高的  
+- [Hetzner](https://www.hetzner.com/sb)  
+简称 Hz，一般买的都是他家的拍卖机。像 i7 2600 的机器，你看 CPU 就能知道这机器服役很久了，硬盘一般都比较老  
+最大特点是真 1Gbps，在这个价位敢说是 1Gbps dedicated and unmetered 的，可能全世界也只有 Hz 一家了。
+非拍卖机安装费比较贵，不过在这价格下能买到那种配置性价比也算不错了  
 - [OVH](https://www.ovh.ie)  
 OVH 比较贵，国内买来刷流的不多，且带宽很多也没有 1Gbps  
 - [SoYouStart](https://www.soyoustart.com/ie)  
 简称 sys，算是 OVH 旗下的中低端独服品牌。SYS 目前在售的机器带宽是 250/500M，从 PT 刷流角度而言不推荐购买  
-- [Kimsufi](https://www.kimsufi.com/en)
+- [Kimsufi](https://www.kimsufi.com/en)  
 简称 ks，是 OVH 旗下的低端独服品牌。带宽为 100Mbps，刷流不太好使，不过有些特价机还算值得买。  
 - [Ikoula](https://www.ikoula.cn/zh)  
-简称 ik。ik 比起上边几家来说算是个小商家了，刷国内站的话连接性还算不错，不过 1Gbps 并不是真的无限制，可能会被限速  
-- [WalkerServers](https://clients.walkerservers.com/aff.php?aff=38) （本链接**含 aff**）  
-简单来说，你点了这个含 aff 的链接下单购买的话，我有一定的返利。对你没什么坏处，对我有好处  
-- [WalkerServers](https://clients.walkerservers.com/) （本链接不含 aff）  
-如果你不愿意走 aff 的话就点这个不包含 aff 的链接。  
-这家简称 WS，销售 Hz/LW/NF 的独服，包优化和技术支持，配置对得起价格，在同类里性价比算好的了    
+简称 ik。刷国内站的话连接性还算不错，不过 1Gbps 并不是真的无限制，容易被限速  
+- [WalkerServers](https://clients.walkerservers.com/aff.php?aff=38) （***本链接含 aff***，[不含 aff 的点此](https://clients.walkerservers.com)）  
+简称 WS，销售 Hz/LW/NF 的独服，包优化和技术支持，配置对得起价格，在同类里性价比算很好的了  
+什么是 aff？简单来说，你点了这个含 aff 的链接下单购买的话，我有一定的返利。对你没什么坏处，你付的钱还是一样，得到的东西还是一样，但对我有好处。如果你不愿意走 aff 的话就点这个不含 aff 的链接下单  
 
-- [Andy10gbit](https://www.reddit.com/user/Andy10gbit) 
+- [Andy10gbit](https://www.reddit.com/user/Andy10gbit)  
 这就是传说中的 andy，包优化和技术支持，回复和交付比较慢，价格不如 WS  
 不过他偶尔搞些促销性价比还不错，另外他卖的 OVH 是你能找到的最便宜的保证带宽 1Gbps 的 OVH 独服  
 - [FeralHosting](https://www.feralhosting.com/pricing)  
@@ -61,8 +61,7 @@ OVH 比较贵，国内买来刷流的不多，且带宽很多也没有 1Gbps
 独服卖的是 LW/NF 的，但性价比不如 WS 和 SH  
 - [seedboxes.cc](https://seedboxes.cc/)  
 我个人把它简称为 sbcc，似乎需要梯子才能访问。为数不多的 10/20Gbps 无限流量共享盒子  
-- [PulsedMedia](http://pulsedmedia.com/clients/aff.php?aff=1230)（本链接**含 aff**）  
-- [PulsedMedia](https://pulsedmedia.com)（本链接不含 aff）  
+- [PulsedMedia](http://pulsedmedia.com/clients/aff.php?aff=1230)（***本链接含 aff***[不含 aff 的点此](https://pulsedmedia.com)）  
 简称 PM。虽然我给了 aff 链接，但说句真心话，我觉得这家挺垃圾的，刷流就算了，保种还算能用  
 
 - [LeaseWeb](https://www.leaseweb.com)  
