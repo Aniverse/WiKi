@@ -17,8 +17,8 @@
 
 ### 云文档
 
-[PT 限盒／限 IP／HR 情况统计表](https://kdocs.cn/l/sEi6Sg5iu)  
-[个人评出的高性价比 seedbox 统计](https://kdocs.cn/l/sNHCWHL2J)  
+- [PT 限盒／限 IP／HR 情况统计表](https://kdocs.cn/l/sEi6Sg5iu)  
+- [个人评出的高性价比 seedbox 统计](https://kdocs.cn/l/sNHCWHL2J)  
 
 ### 常见独服／盒子购买网址
 
@@ -35,9 +35,11 @@
 最大特点是真 1Gbps，在这个价位敢说是 1Gbps dedicated and unmetered 的，可能全世界也只有 Hz 一家了。
 非拍卖机安装费比较贵，不过在这价格下能买到那种配置性价比也算不错了  
 - [OVH](https://www.ovh.ie)  
-OVH 比较贵，国内买来刷流的不多，且带宽很多也没有 1Gbps  
+OVH 是欧洲第一大主机商，在世界范围来看也算数一数二的。价格不便宜，且很多机器带宽也不是真 1Gbps，不适合刷流  
 - [SoYouStart](https://www.soyoustart.com/ie)  
 简称 sys，算是 OVH 旗下的中低端独服品牌。SYS 目前在售的机器带宽是 250/500M，从 PT 刷流角度而言不推荐购买  
+OVH/SYS/KS 用的网络都是一样的，你可以这么理解：OVH 淘汰下来的机器就会扔给 SYS 销售，SYS 都不要的机器就给 KS  
+OVH/SYS/KS 是不同的网站，账号不通用，每个站需要单独注册，且现在注册时 country 无法选择 China  
 - [Kimsufi](https://www.kimsufi.com/en)  
 简称 ks，是 OVH 旗下的低端独服品牌。带宽为 100Mbps，刷流不太好使，不过有些特价机还算值得买。  
 - [Ikoula](https://www.ikoula.cn/zh)  
@@ -58,10 +60,10 @@ OVH 比较贵，国内买来刷流的不多，且带宽很多也没有 1Gbps
 - [SeedHost](https://seedhost.eu)  
 简称 SH。共享盒子和独服都有，刷力较强，网络用的是 LeaseWeb，连接性不错，缺点是限流  
 - [UltraSeedBox](https://www.ultraseedbox.com)  
-简称 USB，目前所有在售的套餐全是限流的，以 Plex 为卖点   
-所使用的 Novo 的网络连接性也不是很好，刷流用的话我不怎么推荐  
+简称 USB，以前用的 YISP 和 NFOrce，刷流挺强；但目前所有在售的套餐全是限流的，以 Plex 为卖点  
+现在所使用的 Novo 的网络连接性也不是很好，刷流用的话我不怎么推荐  
 - [seedbox.io](https://seedbox.io)  
-我个人把它简称为 sbio，这家有独服和共享盒子，共享盒子只提供 rTorrent 和 FTP。  
+我个人把它简称为 sbio，这家有独服和共享盒子，共享盒子的 BT 客户端只提供 rTorrent，且无 SSH 权限。  
 独服卖的是 LW/NF 的，但性价比不如 WS 和 SH  
 - [seedboxes.cc](https://seedboxes.cc/)  
 我个人把它简称为 sbcc，似乎需要梯子才能访问。为数不多的 10/20Gbps 无限流量共享盒子  
@@ -89,11 +91,19 @@ NF 的网络质量也还算不错，虽然也限流，不过只计算上行流�
 
 ### 其他 seedbox 脚本
 
-[QuickBox](https://quickbox.io)  
-[QuickBox-lite](https://github.com/amefs/quickbox-lite)  
-[QuickBox-arm](https://github.com/amefs/quickbox-arm)  
-[swizzin](https://swizzin.ltd)  
-[PGBlitz (AKA PlexGuide)](https://plexguide.com/forums/)  
+- [QuickBox](https://quickbox.io)  
+这个脚本的社区版（CE，开源免费）现在基本不更新了，作者专注于维护专业版（Pro，不开源）  
+QuickBox Pro 可以算是最强盒子脚本了，然而每台机器 5 美元每月的价格，很多国内用户不会买账  
+事实上我觉得免费 swizzin 或者 quickbox-lite、inexis 也比较够用了，花钱买 QuickBox Pro 不是很有必要  
+- [QuickBox-lite](https://github.com/amefs/quickbox-lite)  
+efs 巨佬维护的 quickbox 脚本，dashboard 好用，更新、维护及时，推荐使用  
+- [QuickBox-arm](https://github.com/amefs/quickbox-arm)  
+efs 巨佬维护的 quickbox-lite 脚本的 arm 分支，专门用于 ARM 架构的设备（如树莓派）  
+- [swizzin](https://swizzin.ltd)  
+QuickBox CE 版停更后，swizzin 算是英文社区里最强的免费盒子脚本了，用户很多  
+支持多用户、支持网页面板上一键安装不少软件（但不支持安装 qBittorrent）  
+- [PGBlitz (AKA PlexGuide)](https://plexguide.com/forums/)  
+基于 Docker 部署软件的脚本，这个脚本更侧重于搭建媒体服务器，而不是构建 seedbox  
 
 ### Hetzner 独服一键安装系统（软 RAID0）
 
