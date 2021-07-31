@@ -46,9 +46,7 @@ OVH/SYS/KS 是不同的网站，账号不通用，每个站需要单独注册，
 简称 ik。刷国内站的话连接性还算不错，不过 1Gbps 并不是真的无限制，容易被限速  
 - [WalkerServers](https://clients.walkerservers.com/aff.php?aff=38) （***本链接含 aff***，[不含 aff 的点此](https://clients.walkerservers.com)）  
 简称 WS，销售 Hz/LW/NF 的独服，包优化和技术支持，配置对得起价格，在同类里性价比算很好的了  
-什么是 aff？简单来说，你点了这个含 aff 的链接下单购买的话，我有一定的返利。对你没什么坏处，你付的钱还是一样，得到的东西还是一样的，但对我有好处。如果你不愿意走 aff 的话就点不含 aff 的链接下单  
-
-
+什么是 aff？简单来说，你点了这个含 aff 的链接下单购买的话，我有一定的返利。对你没什么坏处，你付的钱还是一样，得到的东西还是一样的，但对我有好处。如果你不愿意走 aff 的话就点不含 aff 的链接下单 
 - [Andy10gbit](https://www.reddit.com/user/Andy10gbit)  
 这就是传说中的 andy，没官网。包优化和技术支持，价格不如 WS  
 一般推荐去 [discord](https://discord.gg/7Gv8tdM) 联系他，不过他回复的速度有时候能慢得令人发指  
@@ -70,8 +68,6 @@ OVH/SYS/KS 是不同的网站，账号不通用，每个站需要单独注册，
 - [PulsedMedia](http://pulsedmedia.com/clients/aff.php?aff=1230)（***本链接含 aff***，[不含 aff 的点此](https://pulsedmedia.com)）  
 简称 PM。虽然我给了 aff 链接，但说句真心话，我觉得这家挺垃圾的，刷流就算了，保种还算能用  
 这家的连接性非常差，客户端也仅提供了 rTorrent，价格也不美丽。但偶尔搞出的特价机的性价比还是挺不错的  
-
-
 - [LeaseWeb](https://www.leaseweb.com)  
 简称 LW。SH/WS/sbio/andy 的很多机器都来自这家。官网价格比 reseller 卖的价格贵得多，不要从官网购买  
 在国外刷子眼中，使用 LW 网络的盒子在刷流竞速中最强，不过由于限流且加流量很贵，不推荐刷需要大流量的站  
@@ -81,19 +77,11 @@ NF 的网络质量也还算不错，虽然也限流，不过只计算上行流�
 
 ### 其他 seedbox 脚本
 
-- [QuickBox](https://quickbox.io)  
-这个脚本的[社区版](https://github.com/QuickBox/QB)（CE，开源免费）现在基本不更新了，作者专注于维护专业版（Pro，不开源）  
-QuickBox Pro 可以算是最强盒子脚本了，然而每台机器 5 美元每月的价格，很多用户不会买账  
-事实上我觉得免费的 swizzin 或者 quickbox-lite、inexistence 也比较够用了，花钱买 QuickBox Pro 不是很有必要  
 - [QuickBox-lite](https://github.com/amefs/quickbox-lite)  
 efs 巨佬维护的 quickbox 脚本，dashboard 好用，更新、维护及时，推荐使用  
-- [QuickBox-arm](https://github.com/amefs/quickbox-arm)  
-efs 巨佬维护的 quickbox-lite 脚本的 arm 分支，专门用于 ARM 架构的设备（如树莓派）  
 - [swizzin](https://swizzin.ltd)  
 QuickBox CE 版停更后，swizzin 算是英文社区里最强的免费开源盒子脚本了，用户很多，口碑良好  
-支持多用户、支持网页面板上一键安装不少软件（但不支持安装 qBittorrent）  
-- [PGBlitz (AKA PlexGuide)](https://plexguide.com/forums/)  
-基于 Docker 部署软件的脚本，这个脚本更侧重于搭建媒体服务器，而不是构建 seedbox  
+支持多用户、支持网页面板上一键安装不少软件（但不支持安装 FlexGet）  
 
 ### Discord channels for seedbox/trackers
 
@@ -113,10 +101,10 @@ QuickBox CE 版停更后，swizzin 算是英文社区里最强的免费开源盒
 
 ```
 # 安装 Debian 9
-echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Debian-911-stretch-64-minimal.tar.gz -a -n Hz && reboot
+echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Debian-oldstable-64-minimal.tar.gz -a -n Hz && reboot
 
 # 安装 Debian 10
-echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Debian-105-buster-64-minimal.tar.gz  -a -n Hz && reboot
+echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Debian-stable-64-minimal.tar.gz  -a -n Hz && reboot
 
 # 安装 Ubuntu 16.04
 echo x | installimage -p /boot:ext3:1G,/:ext4:all -l 0 -r yes -i images/Ubuntu-1604-xenial-64-minimal.tar.gz -a -n Hz && reboot
